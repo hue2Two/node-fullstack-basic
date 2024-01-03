@@ -16,10 +16,10 @@
         </ul>
     </nav>
     <h1>Register Page</h1>
-    <form>
+    <form action="/auth/register" method="POST">
         <div>
-            <label for="username">Name:</label>
-            <input type="text" id="username" name="username">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
         </div>
         <div>
             <label for="email">Email:</label>
@@ -33,5 +33,9 @@
             <button type="submit">Register</button>
         </div>
     </form>
+
+    {{#if message }}
+            <h4 class="alert alert-danger mt-4">{{message}}</h4>
+    {{/if}}
 </body>
 </html>

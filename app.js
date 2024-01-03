@@ -67,6 +67,9 @@ db.connect((error) => {
 //     res.render('login');
 // })
 
+//in order to parse form data
+app.use(express.urlencoded({ extended: false }));
+
 //move routing to routes folder
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
