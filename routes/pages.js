@@ -22,4 +22,11 @@ router.get('/login', (req, res) => {
     res.render('login');
 })
 
+router.get('/profile', (req, res) => {
+    console.log(`req: ${req.url} , method: ${req.method}`);
+
+    //render home route
+    res.render('profile');
+})
+
 module.exports = router;

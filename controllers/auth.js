@@ -58,4 +58,40 @@ exports.register = (req, res) => {
 
 exports.login = (req, res) => {
     console.log("auth login route");
+
+    console.log(`LOGIN FORM DATA: ${JSON.stringify(req.body)}`);
+
+    //grab specific form information
+    const email = req.body.email;
+    const password = req.body.password;
+
+    console.log(`login info --> email: ${email}, password: ${password}`);
+
+    //check if email exists in db
+    db.query(`SELECT * FROM test WHERE email = ?`, email, (error, result) => {
+        let hashedPasswordFromDB = result[0].password; //query how??
+        console.log(`hashed pw: ${hashedPasswordFromDB}`)
+        console.log(`verifying login email P1: ${JSON.stringify(result)}`);
+        console.log(`verifying login email P2: ${JSON.stringify(email)}`);
+
+        //check if email exists in db
+        if(result.length > 0) {
+            console.log(`login email exists in db`);
+            
+            bcrypt.compare(password, hashedPasswordFromDB, (error, isMatch) => {
+                if(error) {
+                    console.log(`comparing pw error: ${error}`);
+
+                    return res.render('login', {
+                        message: 'email or pw is incorrect'
+                    });
+                } 
+                else console.log(`comparing pw result: ${isMatch}`);
+
+                res.redirect("/profile");
+            })
+        } else {
+            console.log('login email does not exist in db');
+        }
+    })
 }
