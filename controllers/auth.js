@@ -86,9 +86,10 @@ exports.login = (req, res) => {
                         message: 'email or pw is incorrect'
                     });
                 } 
-                else console.log(`comparing pw result: ${isMatch}`);
-
-                res.redirect("/profile");
+                else {
+                    console.log(`comparing pw result: ${isMatch}`);
+                    res.redirect("/profile");
+                }
             })
         } else {
             console.log('login email does not exist in db');
