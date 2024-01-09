@@ -1,6 +1,8 @@
 const mysql = require("mysql");
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const { promisify } = require('util');
+
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -57,6 +59,8 @@ exports.register = (req, res) => {
     
 }
 
+let jwtSecret = "supersecretmessage";
+
 exports.login = (req, res) => {
     console.log("auth login route");
 
@@ -96,7 +100,7 @@ exports.login = (req, res) => {
 
                     //prep jwt token
                     const id = result[0].id;
-                    let jwtSecret = "supersecretmessage";
+                    // let jwtSecret = "supersecretmessage";
                     const token = jwt.sign({ tokenId: id }, jwtSecret);
 
                     //check the token
@@ -104,6 +108,9 @@ exports.login = (req, res) => {
 
                     //insert token into cookie
                     res.cookie('jwt', token);
+
+                    //checking cookie req
+                    console.log(`CHECKING COOKIE REQ: ${req.headers.cookie}`)
 
                     console.log(`Password match: ${isMatch}`);
                     res.redirect("/profile");
@@ -118,4 +125,41 @@ exports.login = (req, res) => {
             console.log('login email does not exist in db');
         }
     })
+}
+
+exports.isLoggedIn = async (req, res, next) => {
+    req.message = "inside middleware";
+    console.log(`MIDDLEWARE: ${req.message}`);
+
+    //check cookies
+    console.log(`CHECKING COOKIES: ${JSON.stringify(req.headers.cookie)}`);
+
+    //filtering cookie
+    // Extract the JWT token from the cookie header
+    const cookies = req.headers.cookie.split('; ');
+    const jwtCookie = cookies.find(cookie => cookie.startsWith('jwt='));
+    const token = jwtCookie ? jwtCookie.split('=')[1] : null;
+    console.log(`JWT INFO COOKIES: ${cookies}`);
+    console.log(`JWT INFO JWTCOOKIE: ${jwtCookie}`);
+    console.log(`JWT TOKEN: ${token}`);
+
+    //decode token in cookie & grab id
+    const decoded = await promisify(jwt.verify)(token, jwtSecret);
+    console.log(`DECODED: ${JSON.stringify(decoded)}`);
+
+    //check if token matches id in db
+    db.query(`SELECT* FROM test WHERE id = ?`, [decoded.tokenId], (error, result) => {
+        console.log(`CHECKING JWT RESULT: ${JSON.stringify(result)}`);
+
+        //if no result
+        if (!result) {
+            return next();
+        }
+
+        //grab user with correct id [array of results]
+        req.user = result[0];
+        return next(); //code stops and moves on to next
+    })
+
+    // next();
 }

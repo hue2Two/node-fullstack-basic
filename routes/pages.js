@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router(); //what does this do?
+const authController = require('../controllers/auth')
 
 router.get('/', (req, res) => {
     console.log(`req: ${req.url} , method: ${req.method}`);
@@ -22,11 +23,19 @@ router.get('/login', (req, res) => {
     res.render('login');
 })
 
-router.get('/profile', (req, res) => {
+router.get('/profile', authController.isLoggedIn, (req, res) => {
     console.log(`req: ${req.url} , method: ${req.method}`);
 
+    if (req.user) {
+        res.render('profile', {
+            user: req.user
+        })
+    } else {
+        res.redirect('/login');
+    }
     //render home route
-    res.render('profile');
+    // res.render('profile');
+    
 })
 
 module.exports = router;

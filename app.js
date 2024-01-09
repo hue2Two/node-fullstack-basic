@@ -18,6 +18,9 @@ dotenv.config({ path: './.env'});
 //import sql dependency
 const mysql = require("mysql");
 
+// const cookieParser = require('cookie-parser');
+// app.use(cookieParser());
+
 //db credentials
 const db = mysql.createConnection({
     host: process.env.DATABSE_HOST,
