@@ -1,5 +1,6 @@
 const mysql = require("mysql");
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 
 const db = mysql.createConnection({
     host: process.env.DATABASE_HOST,
@@ -81,14 +82,36 @@ exports.login = (req, res) => {
             bcrypt.compare(password, hashedPasswordFromDB, (error, isMatch) => {
                 if(error) {
                     console.log(`comparing pw error: ${error}`);
-
+            
                     return res.render('login', {
-                        message: 'email or pw is incorrect'
+                        message: 'An error occurred'
                     });
                 } 
-                else {
-                    console.log(`comparing pw result: ${isMatch}`);
+                else if (isMatch) {
+                    //send test cookie if login correct
+                    // res.cookie("sky", "blue");
+                    console.log(`CHECKING COOKIE PREP: ${JSON.stringify(result)}`);
+                    console.log(`CHECKING COOKIE PROPERTIES P1: ${JSON.stringify(result[0])}`);
+                    console.log(`CHECKING COOKIE PROPERTIES P2: ${JSON.stringify(result[0].id)}`);
+
+                    //prep jwt token
+                    const id = result[0].id;
+                    let jwtSecret = "supersecretmessage";
+                    const token = jwt.sign({ tokenId: id }, jwtSecret);
+
+                    //check the token
+                    console.log(`CHECKING TOKEN: ${token}`);
+
+                    //insert token into cookie
+                    res.cookie('jwt', token);
+
+                    console.log(`Password match: ${isMatch}`);
                     res.redirect("/profile");
+                } else {
+                    console.log(`Password does not match: ${isMatch}`);
+                    return res.render('login', {
+                        message: 'Email or password is incorrect'
+                    });
                 }
             })
         } else {
