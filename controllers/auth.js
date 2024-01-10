@@ -134,32 +134,47 @@ exports.isLoggedIn = async (req, res, next) => {
     //check cookies
     console.log(`CHECKING COOKIES: ${JSON.stringify(req.headers.cookie)}`);
 
-    //filtering cookie
-    // Extract the JWT token from the cookie header
-    const cookies = req.headers.cookie.split('; ');
-    const jwtCookie = cookies.find(cookie => cookie.startsWith('jwt='));
-    const token = jwtCookie ? jwtCookie.split('=')[1] : null;
-    console.log(`JWT INFO COOKIES: ${cookies}`);
-    console.log(`JWT INFO JWTCOOKIE: ${jwtCookie}`);
-    console.log(`JWT TOKEN: ${token}`);
+    if(req.headers.cookie) {
+        try {
+            //filtering cookie
+            // Extract the JWT token from the cookie header
+            const cookies = req.headers.cookie.split('; ');
+            const jwtCookie = cookies.find(cookie => cookie.startsWith('jwt='));
+            const token = jwtCookie ? jwtCookie.split('=')[1] : null;
+            console.log(`JWT INFO COOKIES: ${cookies}`);
+            console.log(`JWT INFO JWTCOOKIE: ${jwtCookie}`);
+            console.log(`JWT TOKEN: ${token}`);
 
-    //decode token in cookie & grab id
-    const decoded = await promisify(jwt.verify)(token, jwtSecret);
-    console.log(`DECODED: ${JSON.stringify(decoded)}`);
+            //decode token in cookie & grab id
+            const decoded = await promisify(jwt.verify)(token, jwtSecret);
+            console.log(`DECODED: ${JSON.stringify(decoded)}`);
 
-    //check if token matches id in db
-    db.query(`SELECT* FROM test WHERE id = ?`, [decoded.tokenId], (error, result) => {
-        console.log(`CHECKING JWT RESULT: ${JSON.stringify(result)}`);
+            //check if token matches id in db
+            db.query(`SELECT* FROM test WHERE id = ?`, [decoded.tokenId], (error, result) => {
+                console.log(`CHECKING JWT RESULT: ${JSON.stringify(result)}`);
 
-        //if no result
-        if (!result) {
+                //if no result
+                if (!result) {
+                    return next();
+                }
+
+                //grab user with correct id [array of results]
+                req.user = result[0]; //new property of user on req obj
+                return next(); //code stops and moves on to next
+            })
+
+            // next();
+
+        } catch (error) {
+            console.log(`COOKIE ERROR: ${error}`);
             return next();
         }
+    } else {
+        next();
+    }
+}
 
-        //grab user with correct id [array of results]
-        req.user = result[0];
-        return next(); //code stops and moves on to next
-    })
-
-    // next();
+exports.logout = (req, res) => {
+    res.cookie('jwt', 'logout');
+    res.redirect('/');
 }
