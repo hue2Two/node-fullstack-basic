@@ -46,25 +46,32 @@ db.connect((error) => {
 
 
 //routing
-app.get('/', (req, res) => {
-    console.log(`req: ${req.url} , method: ${req.method}`);
+// app.get('/', (req, res) => {
+//     console.log(`req: ${req.url} , method: ${req.method}`);
 
-    //render home route
-    res.render('home');
-})
+//     //render home route
+//     res.render('home');
+// })
 
-app.get('/register', (req, res) => {
-    console.log(`req: ${req.url} , method: ${req.method}`);
+// app.get('/register', (req, res) => {
+//     console.log(`req: ${req.url} , method: ${req.method}`);
 
-    //render home route
-    res.render('register');
-})
+//     //render home route
+//     res.render('register');
+// })
 
-app.get('/login', (req, res) => {
-    console.log(`req: ${req.url} , method: ${req.method}`);
+// app.get('/login', (req, res) => {
+//     console.log(`req: ${req.url} , method: ${req.method}`);
 
-    //render home route
-    res.render('login');
-})
+//     //render home route
+//     res.render('login');
+// })
+
+//in order to parse form data
+app.use(express.urlencoded({ extended: false }));
+
+//move routing to routes folder
+app.use('/', require('./routes/pages'));
+app.use('/auth', require('./routes/auth'));
 
 app.listen(5001, console.log("app is running at port 5001"));
