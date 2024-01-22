@@ -1,3 +1,69 @@
 body {
     background-color: orange;
 }
+
+#gamesContainer {
+    display: flex;
+
+    border: solid black 5px;
+    justify-content: space-between;
+}
+
+.card{
+    margin-right: 5px;
+    margin-left: 5px;
+
+    border: solid purple 5px;
+    padding: 10px;
+    background-color: lightcoral;
+}
+
+.gameName {
+    border: solid pink 5px;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+    text-align: center;
+}
+
+#playTimeContainer {
+    border: solid black 5px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
+#playTimeContainer_P1 {
+    border: solid red 5px;
+}
+
+#playTimeContainer_P2 {
+    border: solid blue 5px;
+}
+
+#playTimeContainer_P3 {
+    border: solid green 5px;
+}
+
+#agario:hover {
+    cursor: pointer;
+    border: solid black 5px;
+}
+
+#diepio:hover {
+    cursor: pointer;
+    border: solid black 5px;
+}
+
+#slitherio:hover {
+    cursor: pointer;
+    border: solid black 5px;
+}
+
+#coolMathGames:hover {
+    cursor: pointer;
+    border: solid black 5px;
+}
+
+button:hover {
+    cursor: pointer;
+}

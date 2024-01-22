@@ -2,12 +2,22 @@ const express = require('express');
 const router = express.Router(); //what does this do?
 const authController = require('../controllers/auth')
 
+//parsing sent body info
+// const app = express();
+// app.use(express.json());
+
 router.get('/', (req, res) => {
     console.log(`req: ${req.url} , method: ${req.method}`);
 
     //render home route
     res.render('home');
 })
+
+router.post('/', (req, res) => {
+    console.log(`req: ${req.url} , method: ${req.method}`);
+    console.log(`game data from frontend: ${JSON.stringify(req.body)}`)
+});
+
 
 router.get('/register', (req, res) => {
     console.log(`req: ${req.url} , method: ${req.method}`);

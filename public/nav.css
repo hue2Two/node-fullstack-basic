@@ -1,0 +1,30 @@
+nav {
+    border: solid red 5px;
+
+    margin: 0;
+    padding: 0;
+}
+
+nav ul {
+    border: solid green 5px;
+    display: flex;
+
+    margin: 0;
+    padding: 0;
+    justify-content: space-between;
+}
+
+nav ul li {
+    border: solid purple 5px;
+    list-style: none;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+nav ul li a:hover {
+    cursor: pointer;
+    color: white;
+}
