@@ -72,6 +72,7 @@ db.connect((error) => {
 
 //in order to parse form data
 app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 
 //move routing to routes folder
 app.use('/', require('./routes/pages'));

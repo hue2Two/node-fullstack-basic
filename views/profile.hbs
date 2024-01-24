@@ -20,5 +20,14 @@
         welcome: 
         {{user.name}}
     </h3>
+
+    <h3>your game library:</h3>
+    {{#each games}}
+    <p>{{this}}</p>
+    <!-- More details about the game can be added here -->
+    {{/each}}
+
+    
+
 </body>
 </html>
