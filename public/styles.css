@@ -67,3 +67,37 @@ body {
 button:hover {
     cursor: pointer;
 }
+
+/* profile games */
+.game-item img {
+    border: solid red 5px;
+    width: 100px;
+    height: 100px;
+}
+
+.game-item {
+    border: solid blue 5px;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+}
+
+.game-item:hover {
+    cursor: pointer;
+    border: solid pink 5px;
+}
+
+#profileGames {
+    border: solid green 5px;
+}
+
+#profileStuff {
+    border: solid black 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#profileButtons {
+    border: solid purple 5px;
+}
+

@@ -47,8 +47,15 @@ add_btn.addEventListener("click", () => {
     if (!isUserLoggedIn()) {
         // User is not logged in, display a message
         const confirmationMessageDiv = document.getElementById('confirmationMessage');
+        // if (confirmationMessageDiv) {
+        //     confirmationMessageDiv.innerHTML = '<h4>You must be logged in for this feature</h4>';
+        // }
+
         if (confirmationMessageDiv) {
             confirmationMessageDiv.innerHTML = '<h4>You must be logged in for this feature</h4>';
+            setTimeout(() => {
+                confirmationMessageDiv.innerHTML = '<h4></h4>';
+            }, 1000);
         }
         return; // Exit the function early
     }
@@ -56,6 +63,12 @@ add_btn.addEventListener("click", () => {
     if(gameToAdd === "agario") {
         gamesList.push(gameToAdd);
         console.log(`games list: ${gamesList}`);
+
+        // setTimeout(() => {
+        //     agarioGame.style.border = "solid grey 5px";
+        // }, 1000);
+
+        agarioGame.style.border = "solid purple 5px"; // work on hover back to normal
 
         fetch('http://localhost:5001/', {
             method: "POST",
@@ -79,6 +92,19 @@ add_btn.addEventListener("click", () => {
                 confirmationMessageDiv.innerHTML = `<h4>${data.message}</h4>`;
             }
         })
+
+        const confirmationMessageDiv = document.getElementById('confirmationMessage');
+
+        if (confirmationMessageDiv) {
+            confirmationMessageDiv.innerHTML = '<h4>game was added to library</h4>';
+            setTimeout(() => {
+                confirmationMessageDiv.innerHTML = '<h4></h4>';
+            }, 1000);
+        }
+
+        // .finally(() => {
+        //     console.log(`FINALLY RUN GAME ADD`);
+        // })
 
         // .then(data => console.log(`GAME TO ADD JSON DATA: ${JSON.stringify(data)}`))
 
@@ -112,6 +138,15 @@ add_btn.addEventListener("click", () => {
             }
         })
 
+        const confirmationMessageDiv = document.getElementById('confirmationMessage');
+
+        if (confirmationMessageDiv) {
+            confirmationMessageDiv.innerHTML = '<h4>game was added to library</h4>';
+            setTimeout(() => {
+                confirmationMessageDiv.innerHTML = '<h4></h4>';
+            }, 1000);
+        }
+
         // .then(data => console.log(`GAME TO ADD JSON DATA: ${JSON.stringify(data)}`))
 
         // .then(data => console.log('GAME TO ADD JSON DATA:', data))
@@ -143,6 +178,15 @@ add_btn.addEventListener("click", () => {
                 confirmationMessageDiv.innerHTML = `<h4>${data.message}</h4>`;
             }
         })
+
+        const confirmationMessageDiv = document.getElementById('confirmationMessage');
+
+        if (confirmationMessageDiv) {
+            confirmationMessageDiv.innerHTML = '<h4>game was added to library</h4>';
+            setTimeout(() => {
+                confirmationMessageDiv.innerHTML = '<h4></h4>';
+            }, 1000);
+        }
 
         // .then(data => console.log(`GAME TO ADD JSON DATA: ${JSON.stringify(data)}`))
 
