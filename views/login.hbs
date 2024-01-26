@@ -27,12 +27,17 @@
             <input type="password" id="password" name="password">
         </div>
         <div>
-            <button type="submit">Login</button>
+            <button type="submit" id="btnLogin">Login</button>
         </div>
     </form>
 
-     {{#if message }}
-            <h4 class="alert alert-danger mt-4">{{message}}</h4>
+    {{#if message }}
+            <h4 id="incorrectCredentials">{{message}}</h4>
     {{/if}}
+    {{!-- {{#if messageBlank }}
+            <h4 id="incorrectCredentials2">{{messageBlank}}</h4>
+    {{/if}} --}}
+    <script src="/confirmationMessage.js"></script>
+   
 </body>
 </html>

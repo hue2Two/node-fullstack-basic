@@ -27,7 +27,7 @@ agario.addEventListener("click", () => {
 
     clicked = true;
     if(clicked) {
-        agario.style.border = "solid green 5px";
+        // agario.style.border = "solid green 5px";
         gameClicked = "agario";
     }
 });
@@ -37,7 +37,7 @@ diepio.addEventListener("click", () => {
 
     clicked = true;
     if(clicked) {
-        diepio.style.border = "solid green 5px";
+        // diepio.style.border = "solid green 5px";
         gameClicked = "diepio";
     }
 })
@@ -48,7 +48,7 @@ slitherio.addEventListener("click", () => {
 
     clicked = true;
     if(clicked) {
-        slitherio.style.border = "solid green 5px";
+        // slitherio.style.border = "solid green 5px";
         gameClicked = "slitherio";
     }
 })
@@ -59,7 +59,7 @@ coolMathGames.addEventListener("click", () => {
 
     clicked = true;
     if(clicked) {
-        coolMathGames.style.border = "solid green 5px";
+        // coolMathGames.style.border = "solid green 5px";
         gameClicked = "coolMathGames";
     }
 })
@@ -70,10 +70,10 @@ play_btn.addEventListener("click", () => {
     console.log(`testing game clicked: ${gameClicked}`);
     if (gameClicked === "agario" || gameClicked === "diepio" || gameClicked === "slitherio" || gameClicked === "coolMathGames") {
         playing(gameClicked);
-        agario.style.border = "solid purple 5px";
-        diepio.style.border = "solid purple 5px";
-        slitherio.style.border = "solid purple 5px";
-        coolMathGames.style.border = "solid purple 5px";
+        // agario.style.border = "solid purple 5px";
+        // diepio.style.border = "solid purple 5px";
+        // slitherio.style.border = "solid purple 5px";
+        // coolMathGames.style.border = "solid purple 5px";
     }
 });
 

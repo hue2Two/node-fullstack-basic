@@ -56,6 +56,11 @@ exports.register = (req, res) => {
         )`)
     })
 
+    //new testing
+    return res.render('register', {
+        messageRegister: 'USERS WAS REGISTERED'
+    });
+
     
 }
 
@@ -74,13 +79,15 @@ exports.login = (req, res) => {
 
     //check if email exists in db
     db.query(`SELECT * FROM test WHERE email = ?`, email, (error, result) => {
-        let hashedPasswordFromDB = result[0].password; //query how??
-        console.log(`hashed pw: ${hashedPasswordFromDB}`)
+        // let hashedPasswordFromDB = result[0].password; //query how??
+        // console.log(`hashed pw: ${hashedPasswordFromDB}`)
         console.log(`verifying login email P1: ${JSON.stringify(result)}`);
         console.log(`verifying login email P2: ${JSON.stringify(email)}`);
 
         //check if email exists in db
         if(result.length > 0) {
+            let hashedPasswordFromDB = result[0].password; //query how??
+            console.log(`hashed pw: ${hashedPasswordFromDB}`)
             console.log(`login email exists in db`);
             
             bcrypt.compare(password, hashedPasswordFromDB, (error, isMatch) => {
@@ -123,6 +130,13 @@ exports.login = (req, res) => {
             })
         } else {
             console.log('login email does not exist in db');
+            // res.redirect("/login");
+            // return res.render('login', {
+            //     messageBlank: 'EMAIL OR PW DOES NOT EXIST'
+            // });
+            return res.render('login', {
+                message: 'Email or password is incorrect'
+            });
         }
     })
 }
@@ -174,7 +188,10 @@ exports.isLoggedIn = async (req, res, next) => {
     }
 }
 
+global.isLoggedInHelper = false;
+
 exports.logout = (req, res) => {
+    isLoggedInHelper = false;
     res.cookie('jwt', 'logout');
     res.redirect('/');
 }
