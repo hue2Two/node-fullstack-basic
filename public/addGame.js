@@ -23,6 +23,7 @@ function isUserLoggedIn() {
 agarioGame.addEventListener("click", () => {
     // agarioGame.style.border = "solid green 5px";
     gameToAdd = "agario";
+    agarioGame.classList.add('cardClick');
 
     console.log(`agario was clicked in addGame`);
 })
@@ -30,6 +31,7 @@ agarioGame.addEventListener("click", () => {
 diepioGame.addEventListener("click", () => {
     // agarioGame.style.border = "solid green 5px";
     gameToAdd = "diepio";
+    diepioGame.classList.add('cardClick');
 
     console.log(`diepio was clicked in addGame`);
 })
@@ -37,12 +39,16 @@ diepioGame.addEventListener("click", () => {
 slitherioGame.addEventListener("click", () => {
     // agarioGame.style.border = "solid green 5px";
     gameToAdd = "slitherio";
+    slitherioGame.classList.add('cardClick');
 
     console.log(`slitherio was clicked in addGame`);
 })
 
 add_btn.addEventListener("click", () => {
     console.log(`add to library was clicked`);
+    agarioGame.classList.remove('cardClick');
+    diepioGame.classList.remove('cardClick');
+    slitherioGame.classList.remove('cardClick');
 
     if (!isUserLoggedIn()) {
         // User is not logged in, display a message
@@ -68,7 +74,7 @@ add_btn.addEventListener("click", () => {
         //     agarioGame.style.border = "solid grey 5px";
         // }, 1000);
 
-        agarioGame.style.border = "solid purple 5px"; // work on hover back to normal
+        // agarioGame.style.border = "solid purple 5px"; // work on hover back to normal
 
         fetch('http://localhost:5001/', {
             method: "POST",

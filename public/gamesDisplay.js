@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log(`profile game item was clicked`);
             theTempi = gameName;
 
+            item.classList.add('gameplayhelper');
+
         })
     });
 });
@@ -46,6 +48,7 @@ removeBtn.addEventListener("click", () => {
 
         if (item.textContent == theTempi) {
             console.log(`ITEM TO REMOVE FOUND: ${theTempi}`);
+            item.classList.remove('gameplayhelper');
             item.remove(); //remove from dom
 
             fetch('http://localhost:5001/profile', {
@@ -67,8 +70,47 @@ removeBtn.addEventListener("click", () => {
             const confirmationMessageDiv = document.getElementById('confirmationMessageRemove');
             if (confirmationMessageDiv) {
                 confirmationMessageDiv.innerHTML = `<h4>${data.message}</h4>`;
+
+                setTimeout(() => {
+                    confirmationMessageDiv.innerHTML = `<h4></h4>`;
+                  }, 1000); 
             }
             })
         }
     })
+})
+
+function playing(game) {
+    console.log(`playing game: ${game}`);
+
+    if (game === "agario") {
+        window.open("https://agar.io", "_blank");
+    } else if (game === "diepio") {
+        window.open("https://diep.io/", "_blank");
+    }  else if (game === "slitherio") {
+        window.open("https://slither.io/", "_blank");
+    }  else if (game === "coolMathGames") {
+        window.open("https://www.coolmathgames.com/0-run", "_blank");
+    } 
+}
+
+let playBtn = document.querySelector("#playBtn");
+console.log(`playBtn: ${playBtn}`);
+
+playBtn.addEventListener("click", () => {
+    console.log(`playBtn was clicked`);
+
+    let gameItems = document.querySelectorAll('.game-item');
+    gameItems.forEach(item => {
+        console.log(`item to play: ${item.textContent}`);
+
+        if (item.textContent == theTempi) {
+            console.log(`game to play: ${theTempi}`);
+
+            item.classList.remove('gameplayhelper');
+
+            playing(theTempi);
+        }
+    })
+
 })

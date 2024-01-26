@@ -57,8 +57,8 @@ exports.register = (req, res) => {
     })
 
     //new testing
-    return res.render('profile', {
-        messageRegister: 'USER WAS REGISTERED'
+    return res.render('register', {
+        messageRegister: 'USERS WAS REGISTERED'
     });
 
     
@@ -131,8 +131,11 @@ exports.login = (req, res) => {
         } else {
             console.log('login email does not exist in db');
             // res.redirect("/login");
+            // return res.render('login', {
+            //     messageBlank: 'EMAIL OR PW DOES NOT EXIST'
+            // });
             return res.render('login', {
-                messageBlank: 'EMAIL OR PW DOES NOT EXIST'
+                message: 'Email or password is incorrect'
             });
         }
     })

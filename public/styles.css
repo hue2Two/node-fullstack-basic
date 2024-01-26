@@ -44,7 +44,7 @@ body {
     border: solid green 5px;
 }
 
-#agario:hover {
+/* #agario:hover {
     cursor: pointer;
     border: solid black 5px;
 }
@@ -62,7 +62,18 @@ body {
 #coolMathGames:hover {
     cursor: pointer;
     border: solid black 5px;
+} */
+
+.card:hover {
+    cursor: pointer;
+    border: solid grey 5px; 
 }
+
+.cardClick {
+    cursor: pointer;
+    border: solid grey 5px; 
+}
+
 
 button:hover {
     cursor: pointer;
@@ -87,6 +98,10 @@ button:hover {
     border: solid pink 5px;
 }
 
+.gameplayhelper {
+    border: solid pink 5px;
+}
+
 #profileGames {
     border: solid green 5px;
 }
@@ -99,5 +114,9 @@ button:hover {
 
 #profileButtons {
     border: solid purple 5px;
+}
+
+#incorrectCredentials {
+    /* display: none; */
 }
 
