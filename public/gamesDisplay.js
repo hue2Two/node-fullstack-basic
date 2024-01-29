@@ -1,5 +1,77 @@
 console.log(`running games display js file`);
 let theTempi = null;
+let timePlayedStuffDisplay = document.querySelector("#timePlayedStuffDisplay");
+let timeUpdate = 0;
+
+let timePlayedStuffDisplay1 = document.querySelector("#timePlayedStuffDisplay1");
+let timePlayedStuffDisplay2 = document.querySelector("#timePlayedStuffDisplay2");
+let timePlayedStuffDisplay3 = document.querySelector("#timePlayedStuffDisplay3");
+let timePlayedStuffDisplay4 = document.querySelector("#timePlayedStuffDisplay4");
+
+// let timeUpdateDisplay = [];
+let timeUpdateDisplay = new Array(4);
+let timeUpdateDisplay2 = new Array(4);
+
+console.log(`checking time display: ${timePlayedStuffDisplay}`);
+
+function recievePlayTimeData(timeToRecieve, gameTimeId) {
+    timeUpdate = 0;
+    fetch('http://localhost:5001/timerData')
+        .then(response => response.json())
+        .then(data => {
+            // Log the data for debugging
+            console.log('TIME TO RECIEVE JSON DATA:', JSON.stringify(data));
+            
+            console.log(`filtering time data`);
+
+            for(let i = 0; i < data.data.length; i++) {
+                // console.log(`test: ${i}`);
+                if (data.data[i].game_name == gameTimeId) {
+                    console.log(`game time to update: ${JSON.stringify(data.data[i])}`);
+
+                    timeUpdate += data.data[i].time_played;
+                }
+            }
+
+            console.log(`time to add: ${timeUpdate} for game: ${gameTimeId}`);
+
+            if (gameTimeId == "agario") {
+                timePlayedStuffDisplay1.textContent = `agario: ${timeUpdate}`;
+
+                timeUpdateDisplay[0] = timeUpdate;
+                console.log(`CHECKING PLAY TIME ARRAY: ${timeUpdateDisplay}`);
+            }
+            if (gameTimeId == "diepio") {
+                timePlayedStuffDisplay2.textContent = `diepio: ${timeUpdate}`;
+
+                timeUpdateDisplay[1] = timeUpdate;
+                console.log(`CHECKING PLAY TIME ARRAY: ${timeUpdateDisplay}`);
+            }
+            if (gameTimeId == "slitherio") {
+                timePlayedStuffDisplay3.textContent = `slitherio: ${timeUpdate}`;
+                console.log(`CHECKING PLAY TIME ARRAY: ${timeUpdateDisplay}`);
+
+                timeUpdateDisplay[2] = timeUpdate;
+            }
+            if (gameTimeId == "coolMathGames") {
+                timePlayedStuffDisplay4.textContent = `coolMathGames: ${timeUpdate}`;
+
+                timeUpdateDisplay[3] = timeUpdate;
+                console.log(`CHECKING PLAY TIME ARRAY: ${timeUpdateDisplay}`);
+            }
+
+            console.log(`1TIMEUPDATE1: ${timeUpdateDisplay}`);
+            // res.cookie("playTime", `${timeUpdateDisplay}`);
+
+            // Serialize your array to a string
+            var cookieValue = JSON.stringify(timeUpdateDisplay);
+
+            // Set the cookie directly without an expiration date
+            document.cookie = "playTime=" + cookieValue;
+        })
+}
+
+console.log(`CHECKING TIMEUPDATEDISPLAY AFTER FETCH: ${timeUpdateDisplay}`);
 
 document.addEventListener('DOMContentLoaded', () => {
     const gameItems = document.querySelectorAll('.game-item');
@@ -18,6 +90,9 @@ document.addEventListener('DOMContentLoaded', () => {
             case 'slitherio':
                     img.src = '/images/slitherio.jpg'; 
                     break;
+            case 'coolMathGames':
+                    img.src = '/images/coolMathGames.jpg'; 
+                    break;
             default:
                 img.src = '/images/agario.png'; 
         }
@@ -32,7 +107,37 @@ document.addEventListener('DOMContentLoaded', () => {
             item.classList.add('gameplayhelper');
 
         })
+
+        // console.log(`TIMEUPDATEDISPLAY: ${timeUpdateDisplay}`);
+        // const cookies = req.headers.cookie.split('; ');
+        // const playTimeCookie = cookies.find(cookie => cookie.startsWith('playTime='));
+
+         // Split the entire document.cookie string into individual cookies
+        const cookies = document.cookie.split('; ');
+
+        // Find the specific cookie that starts with 'playTime='
+        const playTimeCookie = cookies.find(cookie => cookie.startsWith('playTime='));
+
+        // If the cookie is found, parse its value
+        if (playTimeCookie) {
+            const cookieValue = playTimeCookie.split('=')[1];
+            timeUpdateDisplay = JSON.parse(cookieValue);
+
+            timePlayedStuffDisplay1.textContent = `agario: ${timeUpdateDisplay[0]}`;
+
+            timePlayedStuffDisplay2.textContent = `diepio: ${timeUpdateDisplay[1]}`;
+
+            timePlayedStuffDisplay3.textContent = `slitherio: ${timeUpdateDisplay[2]}`;
+
+            timePlayedStuffDisplay4.textContent = `coolMathGames: ${timeUpdateDisplay[3]}`;
+        } else {
+            // If the cookie doesn't exist, initialize timeUpdateDisplay as needed
+            timeUpdateDisplay = new Array(4); // Or your default value
+        }
+
     });
+
+    
 });
 
 let removeBtn = document.querySelector("#removeBtn");
@@ -80,37 +185,118 @@ removeBtn.addEventListener("click", () => {
     })
 })
 
-function playing(game) {
-    console.log(`playing game: ${game}`);
+let playingGame = true;
 
-    if (game === "agario") {
-        window.open("https://agar.io", "_blank");
-    } else if (game === "diepio") {
-        window.open("https://diep.io/", "_blank");
-    }  else if (game === "slitherio") {
-        window.open("https://slither.io/", "_blank");
-    }  else if (game === "coolMathGames") {
-        window.open("https://www.coolmathgames.com/0-run", "_blank");
-    } 
+function playing(game) {
+    if(playingGame) {
+        console.log(`playing game: ${game}`);
+
+        if (game === "agario") {
+            window.open("https://agar.io", "_blank");
+        } else if (game === "diepio") {
+            window.open("https://diep.io/", "_blank");
+        }  else if (game === "slitherio") {
+            window.open("https://slither.io/", "_blank");
+        }  else if (game === "coolMathGames") {
+            window.open("https://www.coolmathgames.com/0-run", "_blank");
+        } 
+    }
 }
 
 let playBtn = document.querySelector("#playBtn");
 console.log(`playBtn: ${playBtn}`);
 
+// playBtn.addEventListener("click", () => {
+//     playingGame = true;
+//     console.log(`playBtn was clicked`);
+//     playBtn.textContent = "stop..."
+
+//     let gameItems = document.querySelectorAll('.game-item');
+//     gameItems.forEach(item => {
+//         console.log(`item to play: ${item.textContent}`);
+
+//         if (item.textContent == theTempi) {
+//             console.log(`game to play: ${theTempi}`);
+
+//             item.classList.remove('gameplayhelper');
+
+//             playing(theTempi);
+//         }
+//     })
+
+// })
+
+let intervalID;
+let timerCount = 0;
+let timeDisplay = document.querySelector("#timeDisplay");
+
+function theTime() {
+    console.log("play time started");
+    intervalID = setInterval(() => {
+        timerCount++;
+        timeDisplay.innerText = timerCount;
+    }, 1000);
+
+    timerCount = 0;
+}
+
+function theTimePause() {
+    console.log("play time stopped");
+    clearInterval(intervalID);
+}
+
+function sendPlayTimeData(timeToSend, gameTimeId) {
+    fetch('http://localhost:5001/timerData', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                testData: "timer data to send to back",
+                addedTime: timeToSend,
+                gameTimeName: gameTimeId
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Log the data for debugging
+            console.log('TIME TO ADD JSON DATA:', data);
+            
+        })
+}
+
 playBtn.addEventListener("click", () => {
-    console.log(`playBtn was clicked`);
 
-    let gameItems = document.querySelectorAll('.game-item');
-    gameItems.forEach(item => {
-        console.log(`item to play: ${item.textContent}`);
+    if(playingGame) {
+        playBtn.textContent = "stop";
 
-        if (item.textContent == theTempi) {
-            console.log(`game to play: ${theTempi}`);
+        if (playingGame) {
+            let gameItems = document.querySelectorAll('.game-item');
+            gameItems.forEach(item => {
+                console.log(`item to play: ${item.textContent}`);
+                if (item.textContent == theTempi) {
+                    console.log(`game to play: ${theTempi}`);
+                    item.classList.remove('gameplayhelper');
+                    playing(theTempi);
 
-            item.classList.remove('gameplayhelper');
+                    theTime();
+                }
+            });
 
-            playing(theTempi);
+            playingGame = false;
         }
-    })
+    } else {
+        playBtn.textContent = "play";
+        playingGame = true;
+        console.log(`is remove running`);
 
+        theTimePause();
+        console.log(`TIME TO SEND: ${timeDisplay.textContent}, game: ${theTempi}`);
+
+        sendPlayTimeData(timeDisplay.textContent, theTempi);
+        recievePlayTimeData(timeDisplay.textContent, theTempi);
+    }
+
+    // timeUpdateDisplay2 = timeUpdateDisplay;
+    // console.log(`TIMEUPDATEDISPLAY2" ${timeUpdateDisplay2}`)
 })

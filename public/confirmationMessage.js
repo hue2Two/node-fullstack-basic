@@ -29,6 +29,3 @@ setTimeout(() => {
 //             incorrectCredentials2.style.display = "none";
 //           }, 1000); 
 // })
-
-let confirmRegister = document.querySelector("#confirmRegister");
-console.log(`confirm register: ${confirmRegister}`);

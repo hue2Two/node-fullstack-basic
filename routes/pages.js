@@ -73,16 +73,24 @@ router.post('/', async (req, res) => {
                 const userEmail = result[0].email;
                 const gameToAdd = req.body.addedGames;
 
-                //insert info into the db
-                db.query(`INSERT INTO usergames (
-                    user_id,
-                    game_name
-                )
-                
-                VALUES (
-                    '${userEmail}',
-                    '${gameToAdd}'
-                )`)
+                db.query(`SELECT * FROM usergames WHERE user_id = ? AND game_name = ?`, [userEmail, gameToAdd], (error, result) => {
+                    if (result.length > 0) {
+                        console.log(`${userEmail} already has game: ${gameToAdd}`);
+                    } else {
+                        //insert info into the db
+                        db.query(`INSERT INTO usergames (
+                            user_id,
+                            game_name
+                        )
+                        
+                        VALUES (
+                            '${userEmail}',
+                            '${gameToAdd}'
+                        )`);
+
+                        res.json(gameToAdd);
+                            }
+                    })
             } else {
                 return res.status(404).json({ message: 'User not found' });
             }
@@ -94,6 +102,102 @@ router.post('/', async (req, res) => {
         console.log(`COOKIE ERROR: ${error}`);
     }
 })
+
+router.post('/timerData', async (req, res) => {
+    console.log(`req: ${req.url} , method: ${req.method}`);
+    res.json(`data was recieved in post timerData`);
+
+    try {
+        // Extract the JWT token from the cookie header
+        const cookies = req.headers.cookie.split('; ');
+        const jwtCookie = cookies.find(cookie => cookie.startsWith('jwt='));
+        const token = jwtCookie ? jwtCookie.split('=')[1] : null;
+        console.log(`JWT INFO COOKIES WHEN ADDING TIME: ${cookies}`);
+        console.log(`JWT INFO JWTCOOKIE WHEN ADDING TIME: ${jwtCookie}`);
+        console.log(`JWT TOKEN WHEN ADDING TIME: ${token}`);
+
+        //decode token in cookie & grab id
+        const decoded = await promisify(jwt.verify)(token, jwtSecret);
+        console.log(`DECODED WHEN ADDING TIME: ${JSON.stringify(decoded)}`);
+
+        //check if token matches id in db
+        db.query(`SELECT email FROM test WHERE id = ?`, [decoded.tokenId], (error, result) => {
+            console.log(`CHECKING JWT RESULT WHEN ADDING TIME: ${JSON.stringify(result)}`);
+
+            if (result.length > 0) {
+                const userEmail = result[0].email;
+                const gameToAdd = req.body.gameTimeName;
+                const addedTime = req.body.addedTime;
+
+                //insert info into the db
+                db.query(`INSERT INTO usergames (
+                    user_id,
+                    game_name,
+                    time_played
+                )
+                
+                VALUES (
+                    '${userEmail}',
+                    '${gameToAdd}',
+                    '${addedTime}'
+                )`);
+
+                // res.json(gameToAdd);
+
+            } else {
+                return res.status(404).json({ message: 'User not found' });
+            }
+        })
+
+        // next();
+
+    } catch (error) {
+        console.log(`COOKIE ERROR: ${error}`);
+    }
+})
+
+router.get('/timerData', async (req, res) => {
+    console.log(`req: ${req.url} , method: ${req.method}`);
+
+    try {
+        // Extract the JWT token from the cookie header
+        const cookies = req.headers.cookie.split('; ');
+        const jwtCookie = cookies.find(cookie => cookie.startsWith('jwt='));
+        const token = jwtCookie ? jwtCookie.split('=')[1] : null;
+        console.log(`JWT INFO COOKIES WHEN ADDING TIME: ${cookies}`);
+        console.log(`JWT INFO JWTCOOKIE WHEN ADDING TIME: ${jwtCookie}`);
+        console.log(`JWT TOKEN WHEN ADDING TIME: ${token}`);
+
+        //decode token in cookie & grab id
+        const decoded = await promisify(jwt.verify)(token, jwtSecret);
+        console.log(`DECODED WHEN ADDING TIME: ${JSON.stringify(decoded)}`);
+
+        //check if token matches id in db
+        db.query(`SELECT email FROM test WHERE id = ?`, [decoded.tokenId], (error, result) => {
+            console.log(`CHECKING JWT RESULT WHEN ADDING TIME: ${JSON.stringify(result)}`);
+
+            if (result.length > 0) {
+                const userEmail = result[0].email;
+                // const gameToAdd = req.body.gameTimeName;
+                // const addedTime = req.body.addedTime;
+
+                db.query(`SELECT * FROM usergames WHERE user_id = ?`, [userEmail], (error, gameTimeResult) => {
+                    res.json({
+                        data: gameTimeResult
+                    })
+                })
+
+            } else {
+                return res.status(404).json({ message: 'User not found' });
+            }
+        })
+
+        // next();
+
+    } catch (error) {
+        console.log(`COOKIE ERROR: ${error}`);
+    }
+});
 
 
 
@@ -186,7 +290,7 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
         isLoggedInHelper = true;
         console.log(`isloggedinvalue 2: ${isLoggedInHelper}`);
         // Use the user's email to fetch games
-        db.query(`SELECT * FROM usergames WHERE user_id = ?`, [req.user.email], (error, gamesResult) => {
+        db.query(`SELECT * FROM usergames WHERE user_id = ? AND time_played = 0`, [req.user.email], (error, gamesResult) => {
             if (error) {
                 // Handle error
                 console.log(error);

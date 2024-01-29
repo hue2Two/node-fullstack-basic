@@ -58,7 +58,7 @@ exports.register = (req, res) => {
 
     //new testing
     return res.render('register', {
-        messageRegister: 'USERS WAS REGISTERED'
+        messageRegister: 'USER WAS REGISTERED'
     });
 
     
