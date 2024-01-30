@@ -195,3 +195,14 @@ exports.logout = (req, res) => {
     res.cookie('jwt', 'logout');
     res.redirect('/');
 }
+
+//for game time token
+// exports.logoutP2 = (req, res) => {
+//     //extract for cookie
+//     const cookies = req.headers.cookie.split('; ');
+//     const playTimeCookie = cookies.find(cookie => cookie.startsWith('playTime='));
+
+//     console.log(`playTimecookie P1: ${req.headers.cookie}`);
+//     console.log(`playTime P2: ${cookies}`);
+//     console.log(`playTime P3: ${playTimeCookie}`);
+// }

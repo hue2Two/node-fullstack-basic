@@ -320,6 +320,220 @@ router.get('/profile', authController.isLoggedIn, (req, res) => {
 
 console.log(`isloggedinvalue 3: ${isLoggedInHelper}`);
 
+router.post('/logout', async (req, res) => {
+    console.log(`playtime data sent: ${JSON.stringify(req.body)}`);
+    // let retrievedData = JSON.stringify(req.body.sendPlayTime);
+    let retrievedData = req.body.sendPlayTime;
+
+    let thing1toSend;
+    let thing2toSend;
+    let thing3toSend;
+
+    //filtering cookie
+        // Extract the JWT token from the cookie header
+        const cookies = req.headers.cookie.split('; ');
+        const jwtCookie = cookies.find(cookie => cookie.startsWith('jwt='));
+        const token = jwtCookie ? jwtCookie.split('=')[1] : null;
+        console.log(`JWT INFO TIME SEND P1: ${cookies}`);
+        console.log(`JWT INFO TIME SEND P2: ${jwtCookie}`);
+        console.log(`JWT INFO TIME SEND P3: ${token}`);
+
+        //decode token in cookie & grab id
+        const decoded = await promisify(jwt.verify)(token, jwtSecret);
+        console.log(`JWT INFO TIME SEND P4: ${JSON.stringify(decoded)}`);
+
+    retrievedData.forEach(thing => {
+        console.log(`thing: ${thing}`);
+
+        if(thing.includes("playTime")) {
+            // thing1toSend = thing;
+            let temp = thing.split("=");
+            thing1toSend = temp[1];
+            thing3toSend = temp[0];
+        } else {
+            thing2toSend = thing;
+        }
+    })
+
+    console.log(`thing1: ${thing1toSend}, thing2: ${thing2toSend}`);
+    
+    //check if token matches id in db
+    db.query(`SELECT email FROM test WHERE id = ?`, [decoded.tokenId], (error, result) => {
+        console.log(`CHECKING JWT RESULT SENDING TIME 1: ${JSON.stringify(result)}`);
+
+        if (result.length > 0) {
+            const userEmail = result[0].email;
+
+            //insert info into the db
+            db.query(`INSERT INTO gametimerecord (
+                email,
+                gameTime
+            )
+            
+            VALUES (
+                '${userEmail}',
+                '${thing1toSend}'
+            )`);
+
+            // res.json(gameToAdd);
+            // res.cookie('playTime', 'logout');
+            // res.cookie('playTime', '', { expires: new Date(0), path: '/' });
+
+            // res.json({
+            //     cookieName: thing3toSend
+            // })
+
+        } else {
+            return res.status(404).json({ message: 'User not found' });
+        }
+    })
+
+    res.json({
+        cookieName: thing3toSend
+    })
+});
+
+router.get('/gameTimeRenew', async (req, res) => {
+    try {
+        // Extract the JWT token from the cookie header
+        const cookies = req.headers.cookie.split('; ');
+        const jwtCookie = cookies.find(cookie => cookie.startsWith('jwt='));
+        const token = jwtCookie ? jwtCookie.split('=')[1] : null;
+        console.log(`GAMETIMERENEW P1: ${cookies}`);
+        console.log(`GAMETIMERENEW P2: ${jwtCookie}`);
+        console.log(`GAMETIMERENEW P3: ${token}`);
+
+        //decode token in cookie & grab id
+        const decoded = await promisify(jwt.verify)(token, jwtSecret);
+        console.log(`GAMETIMERENEW P4: ${JSON.stringify(decoded)}`);
+
+        //check if token matches id in db
+        db.query(`SELECT email FROM test WHERE id = ?`, [decoded.tokenId], (error, result) => {
+            console.log(`GAMETIMERENEW P5: ${JSON.stringify(result)}`);
+
+            if (result.length > 0) {
+                const userEmail = result[0].email;
+                // const gameToAdd = req.body.gameTimeName;
+                // const addedTime = req.body.addedTime;
+
+                // const sumQuery = `
+                // SELECT gameTime
+                // FROM gametimerecord
+                // WHERE email = ?
+                // ORDER BY (
+                //     COALESCE(JSON_EXTRACT(gameTime, '$[0]'), 0) +
+                //     COALESCE(JSON_EXTRACT(gameTime, '$[1]'), 0) +
+                //     COALESCE(JSON_EXTRACT(gameTime, '$[2]'), 0) +
+                //     COALESCE(JSON_EXTRACT(gameTime, '$[3]'), 0)
+                // ) DESC
+                // LIMIT 1;
+                // `;
+
+                db.query(`SELECT gameTime FROM gametimerecord WHERE email = ?`, [userEmail], (error, result) => {
+                    console.log(`GAMETIMERENEWP6: ${JSON.stringify(result)}`)
+
+                    let highestSum = 0;
+                    let toSendBack = null;
+
+                    result.forEach(row => {
+                        let gameTimeArray = JSON.parse(row.gameTime);
+                        let sum = gameTimeArray.reduce((acc, val) => acc + (val || 0), 0);
+                        if (sum > highestSum) {
+                            highestSum = sum;
+                            toSendBack = gameTimeArray;
+                        }
+                    });
+
+                    console.log(`sending back: ${toSendBack}`)
+
+                     // Send the highest sum gameTime
+                    //  res.render('profile', {
+                    //     highestTime: toSendBack 
+                    // });
+                    res.json({
+                        highestTime: toSendBack
+                    })
+                })
+            } else {
+                return res.status(404).json({ message: 'User not found' });
+            }
+        })
+
+        // next();
+
+    } catch (error) {
+        console.log(`COOKIE ERROR: ${error}`);
+    }
+})
+
+
+
+// router.get('/gameTimeRenew', async (req, res) => {
+//     try {
+//         // Extract the JWT token from the cookie header
+//         const cookies = req.headers.cookie.split('; ');
+//         const jwtCookie = cookies.find(cookie => cookie.startsWith('jwt='));
+//         const token = jwtCookie ? jwtCookie.split('=')[1] : null;
+
+//         // Decode token in cookie & grab id
+//         const decoded = await promisify(jwt.verify)(token, jwtSecret);
+
+//         // Check if token matches id in db
+//         db.query(`SELECT email FROM test WHERE id = ?`, [decoded.tokenId], (error, result) => {
+//             if (error) {
+//                 // Handle database error
+//                 return res.status(500).json({ message: 'Database error' });
+//             }
+
+//             if (result.length > 0) {
+//                 const userEmail = result[0].email;
+
+//                 // Query to select the gameTime with the highest sum
+//                 const sumQuery = `
+//                     SELECT gameTime
+//                     FROM gametimerecord
+//                     WHERE email = ?
+//                     ORDER BY (JSON_EXTRACT(gameTime, '$[0]') + JSON_EXTRACT(gameTime, '$[1]') + JSON_EXTRACT(gameTime, '$[2]') + JSON_EXTRACT(gameTime, '$[3]')) DESC
+//                     LIMIT 1`;
+
+//                 db.query(sumQuery, [userEmail], (error, gameTimeResult) => {
+//                     if (error) {
+//                         // Handle database error
+//                         return res.status(500).json({ message: 'Database error' });
+//                     }
+
+//                     if (gameTimeResult.length > 0) {
+//                         // Parse the gameTime string into an array
+//                         let gameTimeArray;
+//                         try {
+//                             gameTimeArray = JSON.parse(gameTimeResult[0].gameTime);
+//                         } catch (parseError) {
+//                             // Handle parsing error
+//                             return res.status(500).json({ message: 'Error parsing gameTime data' });
+//                         }
+
+//                         // Render the profile template with the parsed gameTime data
+//                         res.render('profile', {
+//                             gameTimes: gameTimeArray
+//                         });
+//                     } else {
+//                         // Handle case where no gameTime data is found
+//                         res.render('profile', {
+//                             gameTimes: []
+//                         });
+//                     }
+//                 });
+//             } else {
+//                 return res.status(404).json({ message: 'User not found' });
+//             }
+//         });
+//     } catch (error) {
+//         console.log(`COOKIE ERROR: ${error}`);
+//         return res.status(500).json({ message: 'Server error' });
+//     }
+// });
+
+
 
 
 
