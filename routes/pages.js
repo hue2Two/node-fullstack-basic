@@ -435,23 +435,71 @@ router.get('/gameTimeRenew', async (req, res) => {
                     let highestSum = 0;
                     let toSendBack = null;
 
-                    result.forEach(row => {
-                        let gameTimeArray = JSON.parse(row.gameTime);
-                        let sum = gameTimeArray.reduce((acc, val) => acc + (val || 0), 0);
-                        if (sum > highestSum) {
-                            highestSum = sum;
-                            toSendBack = gameTimeArray;
-                        }
-                    });
+                    // result.forEach(row => {
+                    //     let gameTimeArray = JSON.parse(row.gameTime);
+                    //     let sum = gameTimeArray.reduce((acc, val) => acc + (val || 0), 0);
+                    //     if (sum > highestSum) {
+                    //         highestSum = sum;
+                    //         toSendBack = gameTimeArray;
+                    //     }
+                    // });
 
-                    console.log(`sending back: ${toSendBack}`)
+                    // let compareTotal = 0
+
+                    // from returned user data, find highest
+                    for(let i = 0; i < result.length; i++) {
+                        console.log(`GAMETIMERENEWP7: ${JSON.stringify(i)}: ${JSON.stringify(result[i])}`);
+
+                        let gameTimeArray0 = JSON.parse(result[0].gameTime.replace(/(^"|"$)/g, ''));
+                        let compareTotal0 = 0
+                        
+                        gameTimeArray0.forEach(value => {
+                            compareTotal0 += value;
+                        })
+                        highestSum = compareTotal0;
+
+                         // Remove the outer quotes and parse the JSON string to an array
+                        let gameTimeArray = JSON.parse(result[i].gameTime.replace(/(^"|"$)/g, ''));
+                        let compareTotal = 0
+
+                        gameTimeArray.forEach(value => {
+                            compareTotal += value;
+
+                            if(highestSum < compareTotal) {
+                                highestSum = compareTotal;
+                            } 
+                        })
+
+                        console.log(`GAMETIMERENEWP7 TOTAL: ${compareTotal}`);
+                        console.log(`highest value: ${highestSum} at index: ${i}`);
+
+                        // if(compareTotal[i] > compareTotal[i+1]) {
+                        //     highestSum = compareTotal[i];
+                        // }
+
+                        // for(let j = 0; j <= i; j++) {
+                        //     console.log(`inner loop ${j}: ${JSON.stringify(result[j])}`);
+
+                        // }
+                    }
+
+                    // result.forEach(time => {
+                    //     console.log(`GAMETIMERENEWP7: ${JSON.stringify(time)}`);
+
+                    //     // time.split(":");
+                    //     console.log(`GAMETIMERENEWP8: ${JSON.stringify(time.gameTime)}`);
+
+                    // })
+
+                    console.log(`sending back: ${JSON.stringify(result[result.length - 1])}`)
 
                      // Send the highest sum gameTime
                     //  res.render('profile', {
                     //     highestTime: toSendBack 
                     // });
+
                     res.json({
-                        highestTime: toSendBack
+                        highestTime: result[result.length - 1]
                     })
                 })
             } else {

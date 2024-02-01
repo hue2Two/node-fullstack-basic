@@ -140,7 +140,24 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('http://localhost:5001/gameTimeRenew')
     .then(response => response.json())
     .then(data => {
-        console.log(`THE RENDER DATA: ${JSON.stringify(data)}`);
+        // console.log(`THE RENDER DATA: ${JSON.stringify(data.highestTime.gameTime)}`);
+        console.log(`THE RENDER DATA: ${(data.highestTime.gameTime)}`);
+
+        let gameTimeArray;
+        gameTimeArray = JSON.parse(data.highestTime.gameTime);
+        console.log(`GAMETIME ARRAY: ${gameTimeArray}`);
+
+        timePlayedStuffDisplay1.textContent = `agario: ${gameTimeArray[0]}`;
+        timeUpdateDisplay[0] = gameTimeArray[0];
+
+        timePlayedStuffDisplay2.textContent = `diepio: ${gameTimeArray[1]}`;
+        timeUpdateDisplay[1] = gameTimeArray[1];
+
+        timePlayedStuffDisplay3.textContent = `slitherio: ${gameTimeArray[2]}`;
+        timeUpdateDisplay[2] = gameTimeArray[2];
+
+        timePlayedStuffDisplay4.textContent = `coolMathGames: ${gameTimeArray[3]}`;
+        timeUpdateDisplay[3] = gameTimeArray[3];
     });
 
     
@@ -333,6 +350,7 @@ btnLogout.addEventListener("click", () => {
             console.log(`correct cookie found: ${cookie}`);
 
             let sendPlayTime = document.cookie.split(";");
+            console.log(`SEND PLAYTIME DATA: ${sendPlayTime}`);
 
             fetch('http://localhost:5001/logout', {
             method: "POST",
