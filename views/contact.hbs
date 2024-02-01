@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles.css">
     <link rel="stylesheet" href="/nav.css">
-    <title>Register</title>
+    <title>Contact</title>
 </head>
 <body>
     <nav>
@@ -27,32 +27,20 @@
             <li><a href="/register">REGISTER</a></li>
         </ul>
     </nav>
-    <h1>Register Page</h1>
-    <form action="/auth/register" method="POST">
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name">
-        </div>
-        <div>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email">
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-        </div>
-        <div>
-            <button type="submit">Register</button>
-        </div>
-    </form>
-
-    {{#if message }}
-            <h4 class="alert alert-danger mt-4">{{message}}</h4>
-    {{/if}}
-
-     {{#if messageRegister }}
-            <h4 id="confirmRegister">{{messageRegister}}</h4>
-    {{/if}}
-        <script src="/confirmationMessage2.js"></script>
+    <h1>Contact Page</h1>
+    
+    <div class="container">
+        <form action="https://formsubmit.co/h.faisal3399@gmail.com" method="POST">
+            <h3>GET IN TOUCH</h3>
+            <input type="text" id="name" name="name" placeholder="Your Name" required>
+            <input type="email" id="email" name="email" placeholder="email id" required>
+            <input type="text" id="phone" name="phone" placeholder="phone no." required>
+            <textarea id="message" rows="4" name="message" placeholder="Any questions?">
+            </textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+    {{!-- <script src="https://smtpjs.com/v3/smtp.js"></script> --}}
+   
 </body>
 </html>
