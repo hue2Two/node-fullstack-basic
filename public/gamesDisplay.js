@@ -101,10 +101,14 @@ document.addEventListener('DOMContentLoaded', () => {
         item.appendChild(img); // Append the image to the paragraph
 
         item.addEventListener("click", () => {
+            document.querySelectorAll(".game-item").forEach(game => {
+                game.style.border = "none";
+            })
             console.log(`profile game item was clicked`);
             theTempi = gameName;
 
             item.classList.add('gameplayhelper');
+            item.style.border = "solid pink 5px";
 
         })
 

@@ -15,13 +15,24 @@ body {
     margin-right: 5px;
     margin-left: 5px;
 
-    border: solid purple 5px;
+    /* border: solid purple 5px; */
     padding: 10px;
     background-color: lightcoral;
 }
 
+.card:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+.card:active {
+    transform: scale(.98);
+    transition: 0.2s;
+}
+
 .gameName {
-    border: solid pink 5px;
+    /* border: solid pink 5px; */
     /* margin-left: 10px;
     margin-right: 10px; */
     text-align: center;
@@ -35,18 +46,24 @@ body {
 }
 
 #playTimeContainer_P1 {
-    border: solid red 5px;
+    /* border: solid red 5px; */
     text-align: center;
+    background-color: rgba(200, 32, 32, 0.521);
+    padding: 5px;
 }
 
 #playTimeContainer_P2 {
-    border: solid blue 5px;
+    /* border: solid blue 5px; */
     text-align: center;
+    background-color: rgba(33, 37, 149, 0.521);
+    padding: 5px;
 }
 
 #playTimeContainer_P3 {
-    border: solid green 5px;
+    /* border: solid green 5px; */
     text-align: center;
+    background-color: rgba(24, 162, 89, 0.521);
+    padding: 5px;
 }
 
 /* #agario:hover {
@@ -71,7 +88,7 @@ body {
 
 .card:hover {
     cursor: pointer;
-    border: solid grey 5px; 
+    /* border: solid grey 5px;  */
 }
 
 .cardClick {
@@ -86,22 +103,32 @@ button:hover {
 
 /* profile games */
 .game-item img {
-    border: solid red 5px;
+    /* border: solid red 5px; */
     width: 100px;
     height: 100px;
 }
 
 .game-item {
-    border: solid blue 5px;
+    /* border: solid blue 5px; */
+    background-color: rgba(231, 76, 10, 0.521);
     display: flex;
     flex-direction: column;
     width: fit-content;
     margin: 5px;
+    padding: 5px;
+    align-items: center;
 }
 
 .game-item:hover {
     cursor: pointer;
-    border: solid pink 5px;
+    /* border: solid pink 5px; */
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+.game-item:active {
+    transform: scale(.98);
+    transition: 0.2s;
 }
 
 .gameplayhelper {
@@ -109,7 +136,7 @@ button:hover {
 }
 
 #profileGames {
-    border: solid green 5px;
+    /* border: solid green 5px; */
     display: flex;
 }
 
@@ -121,7 +148,9 @@ button:hover {
 }
 
 #profileButtons {
-    border: solid purple 5px;
+    /* border: solid purple 5px; */
+    background-color: lightgreen;
+    padding: 5px;
 }
 
 #incorrectCredentials {
@@ -147,22 +176,22 @@ button:hover {
 }
 
 #timePlayedStuffDisplay1 {
-    border: solid red 5px;
+    /* border: solid red 5px; */
     /* color: white; */
 }
 
 #timePlayedStuffDisplay2 {
-    border: solid white 5px;
+    /* border: solid white 5px; */
     /* color: white; */
 }
 
 #timePlayedStuffDisplay3 {
-    border: solid purple 5px;
+    /* border: solid purple 5px; */
     /* color: white; */
 }
 
 #timePlayedStuffDisplay4 {
-    border: solid brown 5px;
+    /* border: solid brown 5px; */
     /* color: white; */
 }
 
