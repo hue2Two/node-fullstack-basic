@@ -1,3 +1,15 @@
+header {
+    border-top: solid rgba(69, 83, 146, 0.521) 5px;
+    border-left: solid rgba(69, 83, 146, 0.521) 5px;
+    border-right: solid rgba(69, 83, 146, 0.521) 5px;
+    border-radius: 10px;
+    background-color: rgba(70, 92, 189, 0.521);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
 nav {
     border: solid red 5px;
 
@@ -6,17 +18,28 @@ nav {
 }
 
 nav ul {
-    border: solid green 5px;
+    /* border: solid green 5px;
     display: flex;
 
     margin: 0;
     padding: 0;
+    justify-content: space-between; */
+
+    border: solid lightslategray 5px;
+    background-color: lightsteelblue;
+    display: flex;
     justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
-    border: solid purple 5px;
-    list-style: none;
+    /* border: solid purple 5px;
+    list-style: none; */
+
+    font-size: x-large;
+    font-family: 'Work Sans', sans-serif;
 }
 
 nav ul li a {
@@ -28,3 +51,37 @@ nav ul li a:hover {
     cursor: pointer;
     color: white;
 }
+
+h1 {
+    font-family: 'Work Sans', sans-serif;
+}
+
+h3 {
+    font-family: 'Work Sans', sans-serif;
+}
+
+h4 {
+    font-family: 'Work Sans', sans-serif;
+}
+p {
+    font-family: 'Work Sans', sans-serif;
+}
+
+/* -------------------------------------------------------------- */
+
+main {
+    /* border: solid green 8px; */
+ 
+     /* display: flex; */
+     /* flex-direction: column; */
+     background: rgba(10, 223, 98, 0.4);
+     border-radius: 10px;
+     /* flex-grow: 1; */
+     padding-left: 10px;
+     padding-right: 10px;
+     height: 80vh;
+ }
+ 
+/* #uniqueBody {
+    height: 90vh;
+} */

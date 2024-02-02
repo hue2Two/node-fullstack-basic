@@ -25,9 +25,13 @@ function playing(game) {
 agario.addEventListener("click", () => {
     console.log(`agario was clicked`);
 
+    document.querySelectorAll(".card").forEach(c => {
+        c.style.border = "none";
+    })
+
     clicked = true;
     if(clicked) {
-        // agario.style.border = "solid green 5px";
+        agario.style.border = "solid green 5px";
         gameClicked = "agario";
     }
 });
@@ -35,9 +39,13 @@ agario.addEventListener("click", () => {
 diepio.addEventListener("click", () => {
     console.log(`diepio was clicked`);
 
+    document.querySelectorAll(".card").forEach(c => {
+        c.style.border = "none";
+    })
+
     clicked = true;
     if(clicked) {
-        // diepio.style.border = "solid green 5px";
+        diepio.style.border = "solid green 5px";
         gameClicked = "diepio";
     }
 })
@@ -46,9 +54,13 @@ diepio.addEventListener("click", () => {
 slitherio.addEventListener("click", () => {
     console.log(`slitherio was clicked`);
 
+    document.querySelectorAll(".card").forEach(c => {
+        c.style.border = "none";
+    })
+
     clicked = true;
     if(clicked) {
-        // slitherio.style.border = "solid green 5px";
+        slitherio.style.border = "solid green 5px";
         gameClicked = "slitherio";
     }
 })
@@ -57,9 +69,13 @@ slitherio.addEventListener("click", () => {
 coolMathGames.addEventListener("click", () => {
     console.log(`coolMathGames was clicked`);
 
+    document.querySelectorAll(".card").forEach(c => {
+        c.style.border = "none";
+    })
+
     clicked = true;
     if(clicked) {
-        // coolMathGames.style.border = "solid green 5px";
+        coolMathGames.style.border = "solid green 5px";
         gameClicked = "coolMathGames";
     }
 })
@@ -67,6 +83,10 @@ coolMathGames.addEventListener("click", () => {
 console.log(`testing game clicked: ${gameClicked}`);
 
 play_btn.addEventListener("click", () => {
+    document.querySelectorAll(".card").forEach(c => {
+        c.style.border = "none";
+    })
+
     console.log(`testing game clicked: ${gameClicked}`);
     if (gameClicked === "agario" || gameClicked === "diepio" || gameClicked === "slitherio" || gameClicked === "coolMathGames") {
         playing(gameClicked);

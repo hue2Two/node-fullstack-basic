@@ -9,19 +9,22 @@
 </head>
 <body>
     {{!-- <h1>Navigation</h1> --}}
-    <nav>
-        <ul>
-            <li><a href="/">HOME</a></li>
-            <li><a href="/contact">CONTACT</a></li>
-            {{#if isLoggedInHelper}}
-                <li><a href="/profile">PROFILE</a></li>
-            {{else}}
-            <li><a href="/login">LOGIN</a></li>
-            {{/if}}
-            {{!-- <li><a href="/login">LOGIN</a></li> --}}
-            <li><a href="/register">REGISTER</a></li>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">HOME</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+                {{#if isLoggedInHelper}}
+                    <li><a href="/profile">PROFILE</a></li>
+                {{else}}
+                <li><a href="/login">LOGIN</a></li>
+                {{/if}}
+                {{!-- <li><a href="/login">LOGIN</a></li> --}}
+                <li><a href="/register">REGISTER</a></li>
         </ul>
     </nav>
+    </header>
+    <main>
     <h1>Home Page</h1>
     <div id="aboutContainer">
         <h4>
@@ -73,7 +76,9 @@
     {{/if}} --}}
 
     <div id="confirmationMessage"></div>
-
+    </main>
+    <br>
+    <footer><center>&copy;hewtwo2024</center></footer>
     <script src="/timer.js"></script>
     <script src="/selectGame.js"></script>
     <script src="/addGame.js"></script>

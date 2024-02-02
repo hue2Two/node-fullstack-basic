@@ -8,6 +8,7 @@
     <title>Register</title>
 </head>
 <body>
+    <header>
     <nav>
         {{!-- <ul>
             <li><a href="/">HOME</a></li>
@@ -27,6 +28,8 @@
             <li><a href="/register">REGISTER</a></li>
         </ul>
     </nav>
+    </header>
+    <main>
     <h1>Register Page</h1>
     <form action="/auth/register" method="POST">
         <div>
@@ -53,6 +56,9 @@
      {{#if messageRegister }}
             <h4 id="confirmRegister">{{messageRegister}}</h4>
     {{/if}}
-        <script src="/confirmationMessage2.js"></script>
+    </main>
+    <br>
+    <footer><center>&copy;hewtwo2024</center></footer>
+    <script src="/confirmationMessage2.js"></script>
 </body>
 </html>

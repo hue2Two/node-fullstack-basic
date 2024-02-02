@@ -77,6 +77,10 @@ coolMathGamesGame.addEventListener("click", () => {
 })
 
 add_btn.addEventListener("click", () => {
+    document.querySelectorAll(".card").forEach(c => {
+        c.style.border = "none";
+    })
+
     console.log(`add to library was clicked`);
     agarioGame.classList.remove('cardClick');
     diepioGame.classList.remove('cardClick');

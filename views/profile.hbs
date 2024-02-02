@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="/nav.css">
     <title>Home</title>
 </head>
-<body>
+<body id="uniqueBody">
     {{!-- <h1>Navigation</h1> --}}
+    <header>
     <nav>
         <ul>
             <li><a href="/">HOME</a></li>
@@ -17,6 +18,8 @@
             <li><a href="/auth/logout" id="btnLogout">LOGOUT</a></li>
         </ul>
     </nav>
+    </header>
+    <main>
     <h1>Profile Page</h1>
     <h3>
         welcome: 
@@ -42,6 +45,11 @@
 
     <h3>Time Played:</h3>
     <p id="timeDisplay">...</p>
+    {{!-- <br>
+    <br>
+    <br> --}}
+    <hr>
+    <br>
     <div id="timePlayedStuff"> 
         <p id="timePlayedStuffDisplay1"></p>
         <p id="timePlayedStuffDisplay2"></p>
@@ -58,6 +66,10 @@
 
     
     <div id="confirmationMessageRemove"></div>
+    </main>
+    <br>
+    <footer><center>&copy;hewtwo2024</center></footer>
+    {{!-- <footer><center>&copy;hewtwo2024</center></footer> --}}
     <script src="/gamesDisplay.js"></script>
 </body>
 </html>
