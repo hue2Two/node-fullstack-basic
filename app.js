@@ -78,4 +78,4 @@ app.use(express.json());
 app.use('/', require('./routes/pages'));
 app.use('/auth', require('./routes/auth'));
 
-app.listen(5001, console.log("app is running at port 5001"));
+app.listen(5001, '0.0.0.0', console.log("app is running at port 5001"));

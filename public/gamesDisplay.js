@@ -16,7 +16,7 @@ console.log(`checking time display: ${timePlayedStuffDisplay}`);
 
 function recievePlayTimeData(timeToRecieve, gameTimeId) {
     timeUpdate = 0;
-    fetch('http://localhost:5001/timerData')
+    fetch('http://3.135.65.93:5001/timerData')
         .then(response => response.json())
         .then(data => {
             // Log the data for debugging
@@ -141,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    fetch('http://localhost:5001/gameTimeRenew')
+    fetch('http://3.135.65.93:5001/gameTimeRenew')
     .then(response => response.json())
     .then(data => {
         // console.log(`THE RENDER DATA: ${JSON.stringify(data.highestTime.gameTime)}`);
@@ -183,7 +183,7 @@ removeBtn.addEventListener("click", () => {
             item.classList.remove('gameplayhelper');
             item.remove(); //remove from dom
 
-            fetch('http://localhost:5001/profile', {
+            fetch('http://3.135.65.93:5001/profile', {
                 method: "POST",
                 headers: {
                     'Content-Type': 'application/json'
@@ -273,7 +273,7 @@ function theTimePause() {
 }
 
 function sendPlayTimeData(timeToSend, gameTimeId) {
-    fetch('http://localhost:5001/timerData', {
+    fetch('http://3.135.65.93:5001/timerData', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
@@ -356,7 +356,7 @@ btnLogout.addEventListener("click", () => {
             let sendPlayTime = document.cookie.split(";");
             console.log(`SEND PLAYTIME DATA: ${sendPlayTime}`);
 
-            fetch('http://localhost:5001/logout', {
+            fetch('http://3.135.65.93:5001/logout', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'

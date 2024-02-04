@@ -17,7 +17,7 @@ function isUserLoggedIn() {
 }
 
 function addedGameData(gameToAdd) {
-    fetch('http://localhost:5001/', {
+    fetch('http://3.135.65.93:5001/', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
