@@ -11,11 +11,12 @@
     {{!-- <h1>Navigation</h1> --}}
     <header>
     <nav>
+        <img src="/images/pegasus.webp" width="100px" height="100px" id="pegasus">
         <ul>
             <li><a href="/">HOME</a></li>
-            <li><a href="contact" >CONTACT</a></li>
+            <li><a href="#" id="btnLogout">CONTACT</a></li>
             <li><a href="/profile">PROFILE</a></li>
-            <li><a href="/auth/logout" id="btnLogout">LOGOUT</a></li>
+            <li><a href="/auth/logout" >LOGOUT</a></li>
         </ul>
     </nav>
     </header>
@@ -44,7 +45,12 @@
     </div>
 
     <h3>Time Played:</h3>
-    <p id="timeDisplay">...</p>
+    <div id="anotherUIUpdate">
+        <p id="timeDisplay">...</p>
+        <button id="btnSaveGameTime">save game time data</button>
+    </div>
+    <p id="gameTimeConfirm"></p>
+    
     {{!-- <br>
     <br>
     <br> --}}

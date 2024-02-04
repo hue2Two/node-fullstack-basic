@@ -193,6 +193,10 @@ global.isLoggedInHelper = false;
 exports.logout = (req, res) => {
     isLoggedInHelper = false;
     res.cookie('jwt', 'logout');
+    // res.cookie('playTime', 'logout');
+    // Set playTime cookie to 'logout' and make it expire immediately
+    res.cookie('playTime', '', { expires: new Date(Date.now() - 1), httpOnly: true });
+    
     res.redirect('/');
 }
 

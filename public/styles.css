@@ -210,3 +210,24 @@ button:hover {
     display: flex;
     flex-direction: column;
 }
+
+#anotherUIUpdate {
+    /* border: solid red 5px; */
+    display: flex;
+    height: fit-content;
+    width:fit-content;
+    background-color: rgba(236, 222, 26, 0.25);
+    padding: 5px;
+}
+
+#btnSaveGameTime {
+    /* border: solid blue 5px; */
+    height: 30px;
+    margin: auto;
+    border-radius: 5px;
+}
+
+#timeDisplay {
+    /* border: solid orange 5px; */
+    margin-right: 10px;
+}

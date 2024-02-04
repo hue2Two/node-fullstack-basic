@@ -68,6 +68,10 @@ p {
     font-family: 'Work Sans', sans-serif;
 }
 
+#pegasus {
+    display: none;
+}
+
 /* -------------------------------------------------------------- */
 
 main {
@@ -80,7 +84,10 @@ main {
      /* flex-grow: 1; */
      padding-left: 10px;
      padding-right: 10px;
+     padding-bottom: 10px;
      height: 80vh;
+     height: fit-content;
+     /* padding: 5px; */
  }
  
 /* #uniqueBody {
@@ -90,6 +97,7 @@ main {
 @media only screen and (max-width: 1000px) {
     nav ul {
         flex-direction: column;
+        text-align: center;
     }
 
     main {
