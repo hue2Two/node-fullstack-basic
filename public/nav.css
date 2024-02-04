@@ -68,7 +68,7 @@ p {
     font-family: 'Work Sans', sans-serif;
 }
 
-#pegasus {
+#leone {
     display: none;
 }
 
@@ -94,15 +94,59 @@ main {
     height: 90vh;
 } */
 
+@keyframes spin {
+    from{ transform: rotate(0deg)}
+    to{transform: rotate(360deg);}
+}
+
+@keyframes s3 {
+    0% {
+        transform: translateX(0); /* Start at original position */
+    }
+    20% {
+        transform: translateX(100px); /* Quickly move to the right */
+    }
+    /* From 21% to 100%, you keep the element at 100px to the right and start rotating */
+    21%, 100% {
+        transform: translateX(100px) rotate(360deg); /* Finish at new position with a rotation */
+    }
+}
+
+
 @media only screen and (max-width: 1000px) {
+    nav {
+        display: flex;
+        flex-direction: row;
+    }
     nav ul {
+        display: none;
+
         flex-direction: column;
         text-align: center;
+        width: 50vw;
+        margin-left: 15px;
+        /* margin: auto; */
     }
 
     main {
         height: fit-content;
         /* align-items: center; */
+    }
+
+    #leone {
+        /* border: solid red 5px; */
+        display: block;
+        animation-name: spin;
+        animation-duration: 0.5s;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+        animation-timing-function: linear;
+        margin-top: 10px;
+        animation-play-state: paused;
+    }
+
+    #leone:hover {
+        cursor: pointer;
     }
 
     /* .card {

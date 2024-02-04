@@ -209,7 +209,11 @@ button:hover {
 .container form {
     display: flex;
     flex-direction: column;
-    height: 60vh;
+    /* height: 60vh; */
+}
+
+form {
+    height: 62vh;;
 }
 
 #anotherUIUpdate {

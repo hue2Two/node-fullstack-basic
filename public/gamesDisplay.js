@@ -328,63 +328,63 @@ playBtn.addEventListener("click", () => {
     // console.log(`TIMEUPDATEDISPLAY2" ${timeUpdateDisplay2}`)
 })
 
-let btnLogout = document.querySelector("#btnLogout");
-console.log(`targetting btnLogout: ${btnLogout}`);
+// let btnLogout = document.querySelector("#btnLogout");
+// console.log(`targetting btnLogout: ${btnLogout}`);
 
-btnLogout.addEventListener("click", () => {
-    console.log(`btnLogout was clicked`);
-    console.log(`logout cookie value: ${document.cookie}`);
+// btnLogout.addEventListener("click", () => {
+//     console.log(`btnLogout was clicked`);
+//     console.log(`logout cookie value: ${document.cookie}`);
 
-    let cookieLength = 0;
-    for(let i = 0; i < document.cookie.length; i++) {
-        cookieLength ++;
-    }
+//     let cookieLength = 0;
+//     for(let i = 0; i < document.cookie.length; i++) {
+//         cookieLength ++;
+//     }
 
-    console.log(`logout cookie length: ${cookieLength}`);
-    console.log(`logout btn split: ${document.cookie.split(";")}`);
+//     console.log(`logout cookie length: ${cookieLength}`);
+//     console.log(`logout btn split: ${document.cookie.split(";")}`);
     
-    let splitLogoutCookieP1 = document.cookie.split(";");
-    let splitLogoutCookieP2 = splitLogoutCookieP1[0].split("=");
-    console.log(`split P1" ${splitLogoutCookieP1}`);
-    // console.log(`split P2: ${splitLogoutCookieP2}`);
+//     let splitLogoutCookieP1 = document.cookie.split(";");
+//     let splitLogoutCookieP2 = splitLogoutCookieP1[0].split("=");
+//     console.log(`split P1" ${splitLogoutCookieP1}`);
+//     // console.log(`split P2: ${splitLogoutCookieP2}`);
 
-    splitLogoutCookieP1.forEach(cookie => {
+//     splitLogoutCookieP1.forEach(cookie => {
 
-        if(cookie.includes("playTime")) {
-            console.log(`correct cookie found: ${cookie}`);
+//         if(cookie.includes("playTime")) {
+//             console.log(`correct cookie found: ${cookie}`);
 
-            let sendPlayTime = document.cookie.split(";");
-            console.log(`SEND PLAYTIME DATA: ${sendPlayTime}`);
+//             let sendPlayTime = document.cookie.split(";");
+//             console.log(`SEND PLAYTIME DATA: ${sendPlayTime}`);
 
-            fetch('http://localhost:5001/logout', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                testData: "gameTime data test",
-                sendPlayTime: sendPlayTime
-            })
-            })
-            .then(response => response.json())
-            .then(data => {
-                console.log('PLAY TIME DATA SENT RES:', data);
+//             fetch('http://localhost:5001/logout', {
+//             method: "POST",
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: JSON.stringify({
+//                 testData: "gameTime data test",
+//                 sendPlayTime: sendPlayTime
+//             })
+//             })
+//             .then(response => response.json())
+//             .then(data => {
+//                 console.log('PLAY TIME DATA SENT RES:', data);
              
-            // document.cookie = splitLogoutCookieP2[0] + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+//             // document.cookie = splitLogoutCookieP2[0] + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
 
-            document.cookie = data.cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+//             document.cookie = data.cookieName + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
                 
-            })
-        } else {
-            console.log(`wrong cookie found: ${cookie}`)
-        }
-    })
+//             })
+//         } else {
+//             console.log(`wrong cookie found: ${cookie}`)
+//         }
+//     })
 
-    //expire/delete playTime cookie by name
-    // document.cookie = splitLogoutCookieP2[0] + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+//     //expire/delete playTime cookie by name
+//     // document.cookie = splitLogoutCookieP2[0] + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
 
 
-})
+// })
 
 let gameTimeConfirm = document.querySelector("#gameTimeConfirm");
 
