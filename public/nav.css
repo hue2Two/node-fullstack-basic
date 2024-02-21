@@ -1,5 +1,5 @@
 header {
-    border: solid red 5px;
+    /* border: solid red 5px; */
     /* border-top: solid rgba(69, 83, 146, 0.521) 5px; */
     /* border-left: solid rgba(69, 83, 146, 0.521) 5px; */
     /* border-right: solid rgba(69, 83, 146, 0.521) 5px; */
@@ -27,7 +27,7 @@ nav ul {
     padding: 0;
     justify-content: space-between; */
 
-    border: solid lightslategray 5px;
+    /* border: solid lightslategray 5px; */
     background-color: rgba(121, 194, 208, 1);
     /* background-color: lightsteelblue; */
     display: flex;
@@ -78,7 +78,7 @@ p {
 /* -------------------------------------------------------------- */
 
 main {
-    border: solid green 8px;
+    /* border: solid green 8px; */
  
      /* display: flex; */
      /* flex-direction: column; */
@@ -101,13 +101,13 @@ main {
 
 /* ----------------------------------------------------------- */
 #registerContainer {
-    border: solid blue 5px;
+    /* border: solid blue 5px; */
     display: flex;
     justify-content: center;
 }
 
 #registerContainer form {
-    border: solid brown 5px;
+    /* border: solid brown 5px; */
 
     background-color: rgba(121, 194, 208, 1);
     width: 500px;
@@ -129,17 +129,17 @@ main {
 }
 
 #registerContainer form label {
-    border: solid black 5px;
+    /* border: solid black 5px; */
     font-size: x-large;
 }
 
 #registerContainer form input {
-    border: solid grey 5px;
+    /* border: solid grey 5px; */
     font-size: x-large;
 }
 
 #btnRegisterContainer {
-    border: solid orange 5px;
+    /* border: solid orange 5px; */
     height: 75px;
 }
 

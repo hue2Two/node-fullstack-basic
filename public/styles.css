@@ -16,14 +16,14 @@ body {
 }
 
 #gamesContainerUnique {
-    border: solid pink 5px;
+    /* border: solid pink 5px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
 #cardGamesP1 {
-    border: solid red 5px;
+    /* border: solid red 5px; */
     background-color: rgba(121, 194, 208, 1);
     display: flex;
     padding: 10px;
@@ -34,7 +34,7 @@ body {
 }
 
 #cardGamesP2 {
-    border: solid blue 5px;
+    /* border: solid blue 5px; */
     background-color: rgba(121, 194, 208, 1);
     margin: 10px;
     display: flex;
@@ -47,7 +47,7 @@ body {
     margin-left: 5px; */
     margin: 5px;
 
-    border: solid purple 5px;
+    /* border: solid purple 5px; */
     padding: 10px;
     background-color: rgba(187, 228, 233, 1);
     /* background-color: lightcoral; */
@@ -84,7 +84,7 @@ body {
 }
 
 #homeBtnMsgContainer{
-    border: solid purple 5px;
+    /* border: solid purple 5px; */
     /* background-color: rgba(83, 168, 182, 1); */
     background-color: rgb(16, 133, 148, 0.5);
     display: flex;
@@ -93,7 +93,7 @@ body {
 }
 
 #playTimeContainer {
-    border: solid black 5px;
+    /* border: solid black 5px; */
 
     background-color: rgba(121, 194, 208, 1);
     display: flex;
@@ -102,7 +102,7 @@ body {
 }
 
 #playTimeContainer_P1 {
-    border: solid red 5px;
+    /* border: solid red 5px; */
     text-align: center;
     /* background-color: rgba(200, 32, 32, 0.521); */
     padding: 5px;
@@ -110,7 +110,7 @@ body {
 }
 
 #playTimeContainer_P2 {
-    border: solid blue 5px;
+    /* border: solid blue 5px; */
     text-align: center;
     /* background-color: rgba(33, 37, 149, 0.521); */
     padding: 5px;
@@ -118,7 +118,7 @@ body {
 }
 
 #playTimeContainer_P3 {
-    border: solid green 5px;
+    /* border: solid green 5px; */
     text-align: center;
     /* background-color: rgba(24, 162, 89, 0.521); */
     padding: 5px;
@@ -153,7 +153,7 @@ body {
 
 .cardClick {
     cursor: pointer;
-    border: solid grey 5px; 
+    /* border: solid grey 5px;  */
 }
 
 
@@ -163,13 +163,13 @@ button:hover {
 
 /* profile games */
 .game-item img {
-    border: solid red 5px;
+    /* border: solid red 5px; */
     width: 100px;
     height: 100px;
 }
 
 .game-item {
-    border: solid blue 5px;
+    /* border: solid blue 5px; */
     /* background-color: rgba(231, 76, 10, 0.521); */
     display: flex;
     flex-direction: column;
@@ -192,24 +192,24 @@ button:hover {
 }
 
 .gameplayhelper {
-    border: solid pink 5px;
+    /* border: solid pink 5px; */
 }
 
 #profileGames {
-    border: solid green 5px;
+    /* border: solid green 5px; */
     display: flex;
     flex-wrap: wrap;
 }
 
 #profileStuff {
-    border: solid black 5px;
+    /* border: solid black 5px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
 }
 
 #profileButtons {
-    border: solid purple 5px;
+    /* border: solid purple 5px; */
     /* background-color: lightgreen; */
     padding: 5px;
 }
@@ -219,7 +219,7 @@ button:hover {
 }
 
 #timePlayedStuff {
-    border: solid pink 5px;
+    /* border: solid pink 5px; */
 
     /* border: solid green 8px; */
  
@@ -298,7 +298,7 @@ button:hover {
 
 /* ----------------------------------------------------- */
 #comingSoonContainer {
-    border: solid blue 5px;
+    /* border: solid blue 5px; */
 
     /* background-color: rgba(85, 133, 181, 1); */
     background-color: rgb(16, 133, 148, 0.5);
@@ -308,7 +308,7 @@ button:hover {
 }
 
 #comingSoonContainer div {
-    border: solid purple 5px;
+    /* border: solid purple 5px; */
 
     background-color: rgba(121, 194, 208, 1);
     /* background-color: rgba(83, 168, 182, 1); */
@@ -339,7 +339,7 @@ button:hover {
 }
 
 #slideShowInnerP0 {
-    border: solid blue 5px;
+    /* border: solid blue 5px; */
     width: 350px;
     padding: 5px;
     text-align: center;
@@ -348,21 +348,21 @@ button:hover {
 }
 
 #slideShowInner {
-    border: solid purple 5px;
+    /* border: solid purple 5px; */
     /* width: 350px; */
 }
 
 /* -------------------------------------------------- */
 
 #loginContainer {
-    border: solid blue 5px;
+    /* border: solid blue 5px; */
 
     display: flex;
     justify-content: center;
 }
 
 #loginContainer form {
-    border: solid brown 5px;
+    /* border: solid brown 5px; */
 
     background-color: rgba(121, 194, 208, 1);
     width: 500px;
@@ -386,17 +386,17 @@ button:hover {
 
 
 #loginContainer form label {
-    border: solid black 5px;
+    /* border: solid black 5px; */
     font-size: x-large;
 }
 
 #loginContainer form input {
-    border: solid grey 5px;
+    /* border: solid grey 5px; */
     font-size: x-large;
 }
 
 #btnLoginContainer {
-    border: solid brown 5px;
+    /* border: solid brown 5px; */
     height: 150px;
     /* display: flex;
     flex-direction: column;
@@ -410,7 +410,7 @@ button:hover {
 }
 
 .uniqueSSContainer1 {
-    border: solid red 5px;
+    /* border: solid red 5px; */
     background-color: rgba(121, 194, 208, 1);
     display: flex;
     text-decoration: none;
