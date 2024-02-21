@@ -46,7 +46,7 @@ function changeImg() {
     // Create new image element
     var img = document.createElement('img');
     img.src = images[i];
-    img.width = 500; // Set desired width
+    img.width = 350; // Set desired width
     img.height = 300; // Set desired height
 
     // Append new image to the <p> tag

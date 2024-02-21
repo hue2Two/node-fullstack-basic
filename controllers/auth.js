@@ -35,31 +35,54 @@ exports.register = (req, res) => {
                 return res.render('register', {
                     message: 'that email is already in use'
                 })
+            } else {
+                //encrypt pw input
+                let hashedPassword = await bcrypt.hash(password, 8);
+                console.log(`hashed pw: ${hashedPassword}`);
+
+                //insert info into the db
+                db.query(`INSERT INTO test (
+                    name,
+                    email,
+                    password
+                )
+                
+                VALUES (
+                    '${name}',
+                    '${email}',
+                    '${hashedPassword}'
+                )`)
+
+                 //new testing
+                return res.render('register', {
+                    messageRegister: 'USER WAS REGISTERED'
+                });
+
             }
         }
 
         //encrypt pw input
-        let hashedPassword = await bcrypt.hash(password, 8);
-        console.log(`hashed pw: ${hashedPassword}`);
+        // let hashedPassword = await bcrypt.hash(password, 8);
+        // console.log(`hashed pw: ${hashedPassword}`);
 
         //insert info into the db
-        db.query(`INSERT INTO test (
-            name,
-            email,
-            password
-        )
+        // db.query(`INSERT INTO test (
+        //     name,
+        //     email,
+        //     password
+        // )
         
-        VALUES (
-            '${name}',
-            '${email}',
-            '${hashedPassword}'
-        )`)
+        // VALUES (
+        //     '${name}',
+        //     '${email}',
+        //     '${hashedPassword}'
+        // )`)
     })
 
     //new testing
-    return res.render('register', {
-        messageRegister: 'USER WAS REGISTERED'
-    });
+    // return res.render('register', {
+    //     messageRegister: 'USER WAS REGISTERED'
+    // });
 
     
 }

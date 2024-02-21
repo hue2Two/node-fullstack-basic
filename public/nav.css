@@ -9,6 +9,7 @@ header {
     padding-bottom: 20px;
     padding-left: 10px;
     padding-right: 10px;
+    background-color: rgba(83, 168, 182, 1);
 }
 
 nav {
@@ -27,6 +28,7 @@ nav ul {
     justify-content: space-between; */
 
     border: solid lightslategray 5px;
+    background-color: rgba(121, 194, 208, 1);
     /* background-color: lightsteelblue; */
     display: flex;
     justify-content: space-between;
@@ -83,6 +85,8 @@ main {
      /* background: rgba(10, 223, 98, 0.4); */
      /* border-radius: 10px; */
      /* flex-grow: 1; */
+     background-color: rgba(83, 168, 182, 1);
+     margin-top: 20px;
      padding-left: 10px;
      padding-right: 10px;
      padding-bottom: 10px;
@@ -104,6 +108,8 @@ main {
 
 #registerContainer form {
     border: solid brown 5px;
+
+    background-color: rgba(121, 194, 208, 1);
     width: 500px;
     height: 500px;
     display: flex;
@@ -113,7 +119,7 @@ main {
 }
 
 #registerContainer form div {
-    border: solid pink 5px;
+    /* border: solid pink 5px; */
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -132,7 +138,13 @@ main {
     font-size: x-large;
 }
 
+#btnRegisterContainer {
+    border: solid orange 5px;
+    height: 75px;
+}
+
 #btnRegister {
+    margin-top: 20px;
     font-size: x-large;
 }
 
@@ -198,7 +210,7 @@ main {
 
 @media only screen and (max-width: 500px) {
     .card {
-        margin-left: 75px;
+        /* margin-left: 75px; */
         /* margin: 5px; */
     }
 }

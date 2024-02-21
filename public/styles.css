@@ -1,25 +1,45 @@
 body {
     /* background-color: orange; */
-    
+    background-color: rgba(85, 133, 181, 1);
 }
 
 #gamesContainer {
-    /* display: flex; */
+    display: flex;
     /* flex-wrap: wrap; */
     /* justify-content: space-between; */
 
-    border: solid black 5px;
+    /* border: solid black 5px; */
     display: flex;
+    justify-content: center;
+    /* background-color: rgba(83, 168, 182, 1); */
+    background-color: rgb(16, 133, 148, 0.5);
+}
+
+#gamesContainerUnique {
+    border: solid pink 5px;
+    display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 
 #cardGamesP1 {
     border: solid red 5px;
+    background-color: rgba(121, 194, 208, 1);
     display: flex;
+    padding: 10px;
+    margin: 20px;
+    flex-wrap: wrap;
+    /* align-items: center; */
+    justify-content: center;
 }
 
 #cardGamesP2 {
     border: solid blue 5px;
+    background-color: rgba(121, 194, 208, 1);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-around; */
 }
 
 .card{
@@ -29,15 +49,20 @@ body {
 
     border: solid purple 5px;
     padding: 10px;
+    background-color: rgba(187, 228, 233, 1);
     /* background-color: lightcoral; */
 }
 
+#slitherio {
+    margin-top: 16px;
+}
+
 .card img {
-    border: solid pink 5px;
+    /* border: solid pink 5px; */
 }
 
 .card p {
-    border: solid lightsalmon 5px;
+    /* border: solid lightsalmon 5px; */
 }
 
 .card:hover {
@@ -52,7 +77,7 @@ body {
 }
 
 .gameName {
-    border: solid pink 5px;
+    /* border: solid pink 5px; */
     /* margin-left: 10px;
     margin-right: 10px; */
     text-align: center;
@@ -60,15 +85,20 @@ body {
 
 #homeBtnMsgContainer{
     border: solid purple 5px;
+    /* background-color: rgba(83, 168, 182, 1); */
+    background-color: rgb(16, 133, 148, 0.5);
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 #playTimeContainer {
     border: solid black 5px;
 
+    background-color: rgba(121, 194, 208, 1);
     display: flex;
     justify-content: space-between;
+    padding: 10px;
 }
 
 #playTimeContainer_P1 {
@@ -76,6 +106,7 @@ body {
     text-align: center;
     /* background-color: rgba(200, 32, 32, 0.521); */
     padding: 5px;
+    background-color: rgba(187, 228, 233, 1);
 }
 
 #playTimeContainer_P2 {
@@ -83,6 +114,7 @@ body {
     text-align: center;
     /* background-color: rgba(33, 37, 149, 0.521); */
     padding: 5px;
+    background-color: rgba(187, 228, 233, 1);
 }
 
 #playTimeContainer_P3 {
@@ -90,6 +122,7 @@ body {
     text-align: center;
     /* background-color: rgba(24, 162, 89, 0.521); */
     padding: 5px;
+    background-color: rgba(187, 228, 233, 1);
 }
 
 /* #agario:hover {
@@ -105,6 +138,7 @@ body {
 #slitherio:hover {
     cursor: pointer;
     border: solid black 5px;
+    
 }
 
 #coolMathGames:hover {
@@ -266,6 +300,8 @@ button:hover {
 #comingSoonContainer {
     border: solid blue 5px;
 
+    /* background-color: rgba(85, 133, 181, 1); */
+    background-color: rgb(16, 133, 148, 0.5);
     display: flex;
     justify-content: center;
     margin-bottom: 10px;
@@ -274,17 +310,26 @@ button:hover {
 #comingSoonContainer div {
     border: solid purple 5px;
 
+    background-color: rgba(121, 194, 208, 1);
+    /* background-color: rgba(83, 168, 182, 1); */
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
 }
 
 #comingSoonContainer div div {
-    border: solid orange 5px;
+    /* border: solid orange 5px; */
 
     margin: 5px;
 }
 
 #slideShowContainer {
-    border: solid grey 5px;
+    /* background-color: rgba(83, 168, 182, 1); */
+    background-color: rgb(16, 133, 148, 0.5);
+    /* border: solid grey 5px; */
     margin-bottom: 10px;
     display: flex;
     flex-direction: row-reverse;
@@ -295,24 +340,31 @@ button:hover {
 
 #slideShowInnerP0 {
     border: solid blue 5px;
-    width: 500px;
+    width: 350px;
     padding: 5px;
+    text-align: center;
+    /* margin-left: 10px;
+    margin-right: 10px; */
 }
 
 #slideShowInner {
     border: solid purple 5px;
+    /* width: 350px; */
 }
 
 /* -------------------------------------------------- */
 
 #loginContainer {
     border: solid blue 5px;
+
     display: flex;
     justify-content: center;
 }
 
 #loginContainer form {
     border: solid brown 5px;
+
+    background-color: rgba(121, 194, 208, 1);
     width: 500px;
     height: 500px;
     display: flex;
@@ -359,9 +411,14 @@ button:hover {
 
 .uniqueSSContainer1 {
     border: solid red 5px;
+    background-color: rgba(121, 194, 208, 1);
     display: flex;
     text-decoration: none;
     color: black;
+    margin: 10px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .uniqueSSContainer1:hover {

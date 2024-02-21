@@ -47,18 +47,26 @@
                 <label for="password">Password:</label>
                 <input type="password" id="password" name="password">
             </div>
-            <div>
+            <div id="btnRegisterContainer">
                 <button type="submit" id="btnRegister">Register</button>
+
+                {{#if message }}
+                    <h4 id="alreadyRegistered">{{message}}</h4>
+                {{/if}}
+
+                {{#if messageRegister }}
+                        <h4 id="confirmRegister">{{messageRegister}}</h4>
+                {{/if}}
             </div>
         </form>
 
-        {{#if message }}
-            <h4 class="alert alert-danger mt-4">{{message}}</h4>
+        {{!-- {{#if message }}
+            <h4 id="alreadyRegistered">{{message}}</h4>
         {{/if}}
 
         {{#if messageRegister }}
                 <h4 id="confirmRegister">{{messageRegister}}</h4>
-        {{/if}}
+        {{/if}} --}}
     </div>
   
 
@@ -71,8 +79,9 @@
     {{/if}} --}}
     </main>
     <br>
-    <footer><center>&copy;hewtwo2024</center></footer>
+    {{!-- <footer><center>&copy;hewtwo2024</center></footer> --}}
     <script src="/confirmationMessage2.js"></script>
     <script src="/leone.js"></script>
+    <script src="/alreadyRegistered.js"></script>
 </body>
 </html>
