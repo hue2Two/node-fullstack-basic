@@ -17,21 +17,63 @@
             <li><a href="/register">REGISTER</a></li>
         </ul> --}}
         <img src="/images/leone.png" width="75px" height="75px" id="leone">
-        <ul id="navUL">
-            <li><a href="/">HOME</a></li>
-            <li><a href="/contact">CONTACT</a></li>
-            {{#if isLoggedInHelper}}
-                <li><a href="/profile">PROFILE</a></li>
-            {{else}}
-            <li><a href="/login">LOGIN</a></li>
-            {{/if}}
-            {{!-- <li><a href="/login">LOGIN</a></li> --}}
-            <li><a href="/register">REGISTER</a></li>
-        </ul>
+        <ul id="navUL"> 
+                <li><a href="/">HOME</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+                {{#if isLoggedInHelper}}
+                    <li><a href="/profile">PROFILE</a></li>
+                {{else}}
+                <li><a href="/login">LOGIN</a></li>
+                {{/if}}
+                {{!-- <li><a href="/login">LOGIN</a></li> --}}
+                {{#if isLoggedInHelper}}
+                    <li><a href="/auth/logout" >LOGOUT</a></li>
+                {{else}}
+                    <li><a href="/register">REGISTER</a></li>
+                {{/if}}
+
+            </ul>
     </nav>
     </header>
     <main>
     <h1>Contact Page</h1>
+    <div id="aboutContainer">
+        <h4>
+            Thank you for exploring hewtwo.net! We trust your visit was enjoyable and seamless. Should you have encountered any issues or wish to share feedback, please don't hesitate to reach out via the contact form provided below. Your insights are invaluable to us as we strive to enhance your experience with our diverse array of online games, from the engaging io games like agar.io to the strategic depths of Pokemon Showdown.
+        </h4>
+    </div>
+
+    <h2>Frequently Asked Questions</h2>
+    <hr>
+    <div id="faqSection">
+        <div>
+            <h3>How can I play games on HewTwo.net?</h3>
+            <p>
+                Playing games on HewTwo.net is easy and free! Simply navigate to the game you wish to play from our homepage and click on it to start playing. No account is required for most games.
+            </p>
+        </div>
+
+        <div>
+            <h3>Are the games on HewTwo.net free?</h3>
+             <p>
+                Yes, all games on HewTwo.net are free to play. We offer a wide range of online games, including popular io games and Pokémon battle simulations, at no cost.
+            </p>
+        </div>
+
+        <div>
+           <h3>Can I play games on mobile devices?</h3> 
+           <p>
+                Many of our games are optimized for mobile devices. Look for the mobile-friendly icon next to the game title to play on your smartphone or tablet.
+            </p>
+        </div>
+
+        <div>
+            <h3>How can I provide feedback or suggestions?</h3>
+            <p>
+                We welcome your feedback and suggestions! Please use the contact form provided on this page to send us your thoughts. Your input helps us to improve HewTwo.net and the games we offer.
+            </p>
+        </div>
+    </div>
     
     <h3>GET IN TOUCH</h3>
     <hr>
@@ -40,8 +82,7 @@
             <input type="text" id="name" name="name" placeholder="Your Name" required>
             <input type="email" id="email" name="email" placeholder="email id" required>
             <input type="text" id="phone" name="phone" placeholder="phone no." required>
-            <textarea id="message" rows="4" name="message" placeholder="Any questions?">
-            </textarea>
+            <textarea id="message" rows="4" name="message"></textarea>
             <button type="submit">Send</button>
         </form>
     </div>

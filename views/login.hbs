@@ -21,23 +21,34 @@
     </header>  
     <main>
     <h1>Login Page</h1>
-    <form action="/auth/login" method="POST">
-        <div>
-            <label for="email">Email:</label>
-            <input type="text" id="email" name="email">
-        </div>
-        <div>
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password">
-        </div>
-        <div>
-            <button type="submit" id="btnLogin">Login</button>
-        </div>
-    </form>
 
-    {{#if message }}
+    <div id="loginContainer">
+        <form action="/auth/login" method="POST">
+            <div>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email">
+            </div>
+            <div>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <div id="btnLoginContainer">
+                <button type="submit" id="btnLogin">Login</button>
+
+                {{#if message }}
+                <h4 id="incorrectCredentials">{{message}}</h4>
+                {{/if}}
+            </div>
+
+            {{!-- {{#if message }}
             <h4 id="incorrectCredentials">{{message}}</h4>
-    {{/if}}
+            {{/if}} --}}
+        </form>
+
+        {{!-- {{#if message }}
+        <h4 id="incorrectCredentials">{{message}}</h4>
+        {{/if}} --}}
+    </div>
     {{!-- {{#if messageBlank }}
             <h4 id="incorrectCredentials2">{{messageBlank}}</h4>
     {{/if}} --}}

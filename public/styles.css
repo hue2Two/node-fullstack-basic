@@ -4,11 +4,22 @@ body {
 }
 
 #gamesContainer {
-    display: flex;
-    flex-wrap: wrap;
+    /* display: flex; */
+    /* flex-wrap: wrap; */
+    /* justify-content: space-between; */
 
     border: solid black 5px;
-    justify-content: space-between;
+    display: flex;
+    justify-content: center;
+}
+
+#cardGamesP1 {
+    border: solid red 5px;
+    display: flex;
+}
+
+#cardGamesP2 {
+    border: solid blue 5px;
 }
 
 .card{
@@ -16,9 +27,17 @@ body {
     margin-left: 5px; */
     margin: 5px;
 
-    /* border: solid purple 5px; */
+    border: solid purple 5px;
     padding: 10px;
-    background-color: lightcoral;
+    /* background-color: lightcoral; */
+}
+
+.card img {
+    border: solid pink 5px;
+}
+
+.card p {
+    border: solid lightsalmon 5px;
 }
 
 .card:hover {
@@ -33,10 +52,16 @@ body {
 }
 
 .gameName {
-    /* border: solid pink 5px; */
+    border: solid pink 5px;
     /* margin-left: 10px;
     margin-right: 10px; */
     text-align: center;
+}
+
+#homeBtnMsgContainer{
+    border: solid purple 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 #playTimeContainer {
@@ -47,23 +72,23 @@ body {
 }
 
 #playTimeContainer_P1 {
-    /* border: solid red 5px; */
+    border: solid red 5px;
     text-align: center;
-    background-color: rgba(200, 32, 32, 0.521);
+    /* background-color: rgba(200, 32, 32, 0.521); */
     padding: 5px;
 }
 
 #playTimeContainer_P2 {
-    /* border: solid blue 5px; */
+    border: solid blue 5px;
     text-align: center;
-    background-color: rgba(33, 37, 149, 0.521);
+    /* background-color: rgba(33, 37, 149, 0.521); */
     padding: 5px;
 }
 
 #playTimeContainer_P3 {
-    /* border: solid green 5px; */
+    border: solid green 5px;
     text-align: center;
-    background-color: rgba(24, 162, 89, 0.521);
+    /* background-color: rgba(24, 162, 89, 0.521); */
     padding: 5px;
 }
 
@@ -104,14 +129,14 @@ button:hover {
 
 /* profile games */
 .game-item img {
-    /* border: solid red 5px; */
+    border: solid red 5px;
     width: 100px;
     height: 100px;
 }
 
 .game-item {
-    /* border: solid blue 5px; */
-    background-color: rgba(231, 76, 10, 0.521);
+    border: solid blue 5px;
+    /* background-color: rgba(231, 76, 10, 0.521); */
     display: flex;
     flex-direction: column;
     width: fit-content;
@@ -137,7 +162,7 @@ button:hover {
 }
 
 #profileGames {
-    /* border: solid green 5px; */
+    border: solid green 5px;
     display: flex;
     flex-wrap: wrap;
 }
@@ -150,8 +175,8 @@ button:hover {
 }
 
 #profileButtons {
-    /* border: solid purple 5px; */
-    background-color: lightgreen;
+    border: solid purple 5px;
+    /* background-color: lightgreen; */
     padding: 5px;
 }
 
@@ -160,14 +185,14 @@ button:hover {
 }
 
 #timePlayedStuff {
-    /* border: solid pink 5px; */
+    border: solid pink 5px;
 
     /* border: solid green 8px; */
  
      /* display: flex; */
      /* flex-direction: column; */
-     background: gray;
-     border-radius: 10px;
+     /* background: gray; */
+     /* border-radius: 10px; */
      /* flex-grow: 1; */
      padding-left: 10px;
      padding-right: 10px;
@@ -221,7 +246,7 @@ button:hover {
     display: flex;
     height: fit-content;
     width:fit-content;
-    background-color: rgba(236, 222, 26, 0.25);
+    /* background-color: rgba(236, 222, 26, 0.25); */
     padding: 5px;
 }
 
@@ -236,3 +261,138 @@ button:hover {
     /* border: solid orange 5px; */
     margin-right: 10px;
 }
+
+/* ----------------------------------------------------- */
+#comingSoonContainer {
+    border: solid blue 5px;
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+#comingSoonContainer div {
+    border: solid purple 5px;
+
+    display: flex;
+}
+
+#comingSoonContainer div div {
+    border: solid orange 5px;
+
+    margin: 5px;
+}
+
+#slideShowContainer {
+    border: solid grey 5px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    /* padding-left: 10%;
+    padding-right: 10%; */
+}
+
+#slideShowInnerP0 {
+    border: solid blue 5px;
+    width: 500px;
+    padding: 5px;
+}
+
+#slideShowInner {
+    border: solid purple 5px;
+}
+
+/* -------------------------------------------------- */
+
+#loginContainer {
+    border: solid blue 5px;
+    display: flex;
+    justify-content: center;
+}
+
+#loginContainer form {
+    border: solid brown 5px;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+
+#loginContainer form div {
+    /* border: solid pink 5px; */
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    /* height: 100%; */
+    /* justify-content: space-around; */
+    /* padding-top: 9%; */
+}
+
+
+#loginContainer form label {
+    border: solid black 5px;
+    font-size: x-large;
+}
+
+#loginContainer form input {
+    border: solid grey 5px;
+    font-size: x-large;
+}
+
+#btnLoginContainer {
+    border: solid brown 5px;
+    height: 150px;
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; */
+}
+
+
+#btnLogin {
+    margin-top: 50px;
+    font-size: x-large;
+}
+
+.uniqueSSContainer1 {
+    border: solid red 5px;
+    display: flex;
+    text-decoration: none;
+    color: black;
+}
+
+.uniqueSSContainer1:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+.uniqueSSContainer1:active {
+    transform: scale(.98);
+    transition: 0.2s;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ---------------------------------------------------------- */
+
+.container {
+    /* border: solid purple 5px; */
+}
+
+.container form {
+    /* border: solid orange 5px; */
+}
+
+.container form textarea {
+    /* border: solid blue 5px; */
+    height: 100%;
+}
+
+
+

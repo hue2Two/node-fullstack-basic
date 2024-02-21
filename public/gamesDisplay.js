@@ -36,10 +36,19 @@ function recievePlayTimeData(timeToRecieve, gameTimeId) {
             console.log(`time to add: ${timeUpdate} for game: ${gameTimeId}`);
 
             if (gameTimeId == "agario") {
-                timePlayedStuffDisplay1.textContent = `agario: ${timeUpdate}`;
+                if(timeUpdate == 'null') {
+                    timePlayedStuffDisplay1.textContent = "";
+                } else {
+                    timePlayedStuffDisplay1.textContent = `agario: ${timeUpdate}`;
 
-                timeUpdateDisplay[0] = timeUpdate;
-                console.log(`CHECKING PLAY TIME ARRAY: ${timeUpdateDisplay}`);
+                    timeUpdateDisplay[0] = timeUpdate;
+                    console.log(`CHECKING PLAY TIME ARRAY: ${timeUpdateDisplay}`);
+                }
+
+                // timePlayedStuffDisplay1.textContent = `agario: ${timeUpdate}`;
+
+                // timeUpdateDisplay[0] = timeUpdate;
+                // console.log(`CHECKING PLAY TIME ARRAY: ${timeUpdateDisplay}`);
             }
             if (gameTimeId == "diepio") {
                 timePlayedStuffDisplay2.textContent = `diepio: ${timeUpdate}`;
@@ -151,17 +160,45 @@ document.addEventListener('DOMContentLoaded', () => {
         gameTimeArray = JSON.parse(data.highestTime.gameTime);
         console.log(`GAMETIME ARRAY: ${gameTimeArray}`);
 
-        timePlayedStuffDisplay1.textContent = `agario: ${gameTimeArray[0]}`;
-        timeUpdateDisplay[0] = gameTimeArray[0];
+        if(gameTimeArray[0] == "" || gameTimeArray[0] == null) {
+            timePlayedStuffDisplay1.textContent = "";
+        } else {
+            timePlayedStuffDisplay1.textContent = `agario: ${gameTimeArray[0]}`;
+            timeUpdateDisplay[0] = gameTimeArray[0]; 
+        }
 
-        timePlayedStuffDisplay2.textContent = `diepio: ${gameTimeArray[1]}`;
-        timeUpdateDisplay[1] = gameTimeArray[1];
+        // timePlayedStuffDisplay1.textContent = `agario: ${gameTimeArray[0]}`;
+        // timeUpdateDisplay[0] = gameTimeArray[0];
 
-        timePlayedStuffDisplay3.textContent = `slitherio: ${gameTimeArray[2]}`;
-        timeUpdateDisplay[2] = gameTimeArray[2];
+        if(gameTimeArray[1] == "" || gameTimeArray[1] == null) {
+            timePlayedStuffDisplay2.textContent = "";
+        } else {
+            timePlayedStuffDisplay2.textContent = `diepio: ${gameTimeArray[1]}`;
+            timeUpdateDisplay[1] = gameTimeArray[1];
+        }
 
-        timePlayedStuffDisplay4.textContent = `coolMathGames: ${gameTimeArray[3]}`;
-        timeUpdateDisplay[3] = gameTimeArray[3];
+        // timePlayedStuffDisplay2.textContent = `diepio: ${gameTimeArray[1]}`;
+        // timeUpdateDisplay[1] = gameTimeArray[1];
+
+        if(gameTimeArray[2] == "" || gameTimeArray[2] == null) {
+            timePlayedStuffDisplay3.textContent = "";
+        } else {
+            timePlayedStuffDisplay3.textContent = `slitherio: ${gameTimeArray[2]}`;
+            timeUpdateDisplay[2] = gameTimeArray[2];
+        }
+
+        // timePlayedStuffDisplay3.textContent = `slitherio: ${gameTimeArray[2]}`;
+        // timeUpdateDisplay[2] = gameTimeArray[2];
+
+        if(gameTimeArray[3] == "" || gameTimeArray[3] == null) {
+            timePlayedStuffDisplay4.textContent = "";
+        } else {
+            timePlayedStuffDisplay4.textContent = `coolMathGames: ${gameTimeArray[3]}`;
+            timeUpdateDisplay[3] = gameTimeArray[3];
+        }
+
+        // timePlayedStuffDisplay4.textContent = `coolMathGames: ${gameTimeArray[3]}`;
+        // timeUpdateDisplay[3] = gameTimeArray[3];
     });
 
     

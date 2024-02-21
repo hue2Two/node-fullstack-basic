@@ -1,9 +1,10 @@
 header {
-    border-top: solid rgba(69, 83, 146, 0.521) 5px;
-    border-left: solid rgba(69, 83, 146, 0.521) 5px;
-    border-right: solid rgba(69, 83, 146, 0.521) 5px;
-    border-radius: 10px;
-    background-color: rgba(70, 92, 189, 0.521);
+    border: solid red 5px;
+    /* border-top: solid rgba(69, 83, 146, 0.521) 5px; */
+    /* border-left: solid rgba(69, 83, 146, 0.521) 5px; */
+    /* border-right: solid rgba(69, 83, 146, 0.521) 5px; */
+    /* border-radius: 10px; */
+    /* background-color: rgba(70, 92, 189, 0.521); */
     padding-top: 20px;
     padding-bottom: 20px;
     padding-left: 10px;
@@ -26,7 +27,7 @@ nav ul {
     justify-content: space-between; */
 
     border: solid lightslategray 5px;
-    background-color: lightsteelblue;
+    /* background-color: lightsteelblue; */
     display: flex;
     justify-content: space-between;
     list-style: none;
@@ -75,12 +76,12 @@ p {
 /* -------------------------------------------------------------- */
 
 main {
-    /* border: solid green 8px; */
+    border: solid green 8px;
  
      /* display: flex; */
      /* flex-direction: column; */
-     background: rgba(10, 223, 98, 0.4);
-     border-radius: 10px;
+     /* background: rgba(10, 223, 98, 0.4); */
+     /* border-radius: 10px; */
      /* flex-grow: 1; */
      padding-left: 10px;
      padding-right: 10px;
@@ -93,6 +94,47 @@ main {
 /* #uniqueBody {
     height: 90vh;
 } */
+
+/* ----------------------------------------------------------- */
+#registerContainer {
+    border: solid blue 5px;
+    display: flex;
+    justify-content: center;
+}
+
+#registerContainer form {
+    border: solid brown 5px;
+    width: 500px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin: 10px;
+}
+
+#registerContainer form div {
+    border: solid pink 5px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    /* height: 100%; */
+    /* justify-content: space-around; */
+    /* padding-top: 9%; */
+}
+
+#registerContainer form label {
+    border: solid black 5px;
+    font-size: x-large;
+}
+
+#registerContainer form input {
+    border: solid grey 5px;
+    font-size: x-large;
+}
+
+#btnRegister {
+    font-size: x-large;
+}
 
 @keyframes spin {
     from{ transform: rotate(0deg)}
