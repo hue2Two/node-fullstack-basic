@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router(); //what does this do?
 const authController = require('../controllers/auth')
 
-console.log(`isloggedinvalue 1: ${isLoggedInHelper}`);
+console.log(`--------------isloggedinvalue 1: ${isLoggedInHelper}`);
 
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
@@ -25,7 +25,7 @@ router.get('/', (req, res) => {
     console.log(`req: ${req.url} , method: ${req.method}`);
 
     //render home route
-    console.log(`TESTING ISLOGGEDIN 4: ${isLoggedInHelper}`);
+    console.log(`---------TESTING ISLOGGEDIN 4: ${isLoggedInHelper}`);
     // res.render('home');
     res.render('home', {
         isLoggedInHelper: isLoggedInHelper

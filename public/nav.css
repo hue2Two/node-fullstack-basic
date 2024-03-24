@@ -1,5 +1,5 @@
 header {
-    /* border: solid red 5px; */
+    border: solid red 5px;
     /* border-top: solid rgba(69, 83, 146, 0.521) 5px; */
     /* border-left: solid rgba(69, 83, 146, 0.521) 5px; */
     /* border-right: solid rgba(69, 83, 146, 0.521) 5px; */
@@ -13,7 +13,7 @@ header {
 }
 
 nav {
-    /* border: solid red 5px; */
+    border: solid red 5px;
 
     margin: 0;
     padding: 0;
@@ -27,7 +27,7 @@ nav ul {
     padding: 0;
     justify-content: space-between; */
 
-    /* border: solid lightslategray 5px; */
+    border: solid lightslategray 5px;
     background-color: rgba(121, 194, 208, 1);
     /* background-color: lightsteelblue; */
     display: flex;
@@ -75,6 +75,11 @@ p {
     display: none;
 }
 
+#leone:active {
+    transform: scale(.75);
+    transition: 0.2s;
+}
+
 /* -------------------------------------------------------------- */
 
 main {
@@ -85,6 +90,7 @@ main {
      /* background: rgba(10, 223, 98, 0.4); */
      /* border-radius: 10px; */
      /* flex-grow: 1; */
+     border: solid green 8px;
      background-color: rgba(83, 168, 182, 1);
      margin-top: 20px;
      padding-left: 10px;
@@ -101,13 +107,13 @@ main {
 
 /* ----------------------------------------------------------- */
 #registerContainer {
-    /* border: solid blue 5px; */
+    border: solid blue 5px;
     display: flex;
     justify-content: center;
 }
 
 #registerContainer form {
-    /* border: solid brown 5px; */
+    border: solid brown 5px;
 
     background-color: rgba(121, 194, 208, 1);
     width: 500px;
@@ -119,7 +125,7 @@ main {
 }
 
 #registerContainer form div {
-    /* border: solid pink 5px; */
+    border: solid pink 5px;
     display: flex;
     flex-direction: column;
     margin: 10px;
@@ -129,17 +135,17 @@ main {
 }
 
 #registerContainer form label {
-    /* border: solid black 5px; */
+    border: solid black 5px;
     font-size: x-large;
 }
 
 #registerContainer form input {
-    /* border: solid grey 5px; */
+    border: solid grey 5px;
     font-size: x-large;
 }
 
 #btnRegisterContainer {
-    /* border: solid orange 5px; */
+    border: solid orange 5px;
     height: 75px;
 }
 
@@ -166,8 +172,18 @@ main {
     }
 }
 
+.patch1 {
+    width: 200px;
+    height: 100px;
+}
+
 
 @media only screen and (max-width: 1000px) {
+    .patch1 {
+        width: 300px;
+        height: 300px;
+    }
+
     nav {
         display: flex;
         flex-direction: row;
@@ -188,7 +204,7 @@ main {
     }
 
     #leone {
-        /* border: solid red 5px; */
+        border: solid red 5px;
         display: block;
         animation-name: spin;
         animation-duration: 0.5s;
